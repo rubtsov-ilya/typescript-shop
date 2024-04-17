@@ -1,0 +1,29 @@
+.payment-btn
+  border-radius: 6px
+  padding: 15px
+  background-color: var(--base-button)
+  width: 100%
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  gap: 12px
+  cursor: pointer
+  transition: all 0.2s ease
+  border: 1px solid var(--base-button)
+  &:hover
+    background-color: var(--base-hover)
+  &__icon
+    width: 17px
+    height: 17px
+  &__text
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: 12px
+    line-height: 17px
+    text-transform: uppercase
+    color: var(--base-text)
+    user-select: none
+.payment-btn.active
+  border: 1px solid var(--brand-purple)
+  background-color: var(--brand-purple-light)
+  

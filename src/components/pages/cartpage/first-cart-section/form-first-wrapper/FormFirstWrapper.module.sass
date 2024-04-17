@@ -1,0 +1,69 @@
+@import '../../../../../assets/css/_mixins.sass'
+.first-wrapper
+  margin-top: 15px
+  padding: 40px
+  border-radius: 6px
+  background: var(--bg-form)
+  &__title-wrapper
+    display: flex
+    align-items: flex-start
+    gap: 8px
+  &__point-icon
+  &__title
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: 16px
+    line-height: 22px
+    color: var(--base-subtitle)
+  &__subtitle
+    margin-top: 2px
+    font-family: var(--font-family)
+    font-weight: 400
+    font-size: 14px
+    line-height: 1.3
+    color: var(--base-text)
+  &__grid
+    margin-top: 44px
+    display: grid
+    grid-template-columns: 200px 1fr 60px
+    gap: 16px 12px
+    //grid-auto-columns:
+
+.input
+  &__tel
+    @include input-sass
+
+  &__rua
+    grid-column: 1 / 4
+    @include input-sass
+  &__numero
+    grid-column: 1 / 2
+    @include input-sass
+  &__complemento
+    position: relative
+    @include input-sass
+    &-wrapper
+      position: relative
+      grid-column: 2 / 4
+  &__bairro
+    @include input-sass
+  &__cidade
+    @include input-sass
+  &__uf
+    @include input-sass
+  &__error
+    border: 1px solid red
+
+.label
+  &__complemento
+    position: absolute
+    top: 50%
+    right: 12px
+    font-family: var(--font-family)
+    font-style: italic
+    font-weight: 400
+    font-size: 12px
+    line-height: 1.3
+    color: var(--base-label)
+    transform: translateY(-50%)
+    pointer-events: none
