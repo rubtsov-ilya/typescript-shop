@@ -34,7 +34,7 @@ const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart,
         })}
 
         {/* delivery and order price */}
-        {!isLoadingCart && cart.length !== 0 && (<OrderPrices totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} />)}
+        {!isLoadingCart && cart.length !== 0 && (<OrderPrices currency={cart[0].currency} totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} />)}
 
         {/* buttons */}
         {cart.length === 0 && (<EmptyCartBtn />)}
