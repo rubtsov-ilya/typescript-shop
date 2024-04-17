@@ -1,4 +1,4 @@
-import React, { FC, createContext, useEffect, useState } from 'react'
+import React, { FC, createContext, useEffect, useLayoutEffect, useState } from 'react'
 import { IValue } from '../interfaces/DarkThemeValue.interface'
 
 interface DarkThemeProviderProps {
@@ -11,7 +11,7 @@ const DarkThemeProvider: FC<DarkThemeProviderProps> = ({ children }) => {
   const bodyTag = document.querySelector('body') as HTMLBodyElement
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {
       setIsDarkTheme(true)
