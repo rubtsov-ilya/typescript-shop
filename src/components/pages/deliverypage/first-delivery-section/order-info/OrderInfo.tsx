@@ -2,14 +2,19 @@ import styles from "./OrderInfo.module.sass";
 import ClockSvg from '../../../../../assets/images/delivery-page-icons/clock.svg?react'
 import DollarSvg from '../../../../../assets/images/delivery-page-icons/dollar.svg?react'
 import PointSvg from '../../../../../assets/images/delivery-page-icons/point.svg?react'
+import { IFormValues } from "../../../../../interfaces/FormValues.interface";
+import { FC } from "react";
 
-export default function OrderInfo({ orderData }) {
+interface OrderInfoProps {
+  orderData: IFormValues
+}
+
+const OrderInfo: FC<OrderInfoProps> = ({ orderData }) => {
   /* orderData have: phone, rua, numero, complemento, payment, bairro, cidade, uf */
 
   return (
     <div className={styles["order-info-gradient"]}>
       <div className={styles["order-info"]}>
-
         <div className={styles["order-info__item-wrapper"]}>
           <div className={styles["order-info__point-bg"]}>
             <PointSvg className={styles["order-info__svg"]}/>
@@ -46,3 +51,5 @@ export default function OrderInfo({ orderData }) {
     </div>
   );
 }
+
+export default OrderInfo
