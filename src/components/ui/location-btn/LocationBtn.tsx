@@ -1,7 +1,8 @@
 import styles from './LocationBtn.module.sass'
 import point from "../../../assets/images/icons/point.svg";
+import { FC } from 'react';
 
-export default function LocationBtn() {
+const LocationBtn: FC = () => {
   return (
     <a href='#!' className={styles.location}>
       <img className={styles.location__svg} src={point} alt="Point" />
@@ -9,3 +10,5 @@ export default function LocationBtn() {
     </a>
   );
 }
+
+export default LocationBtn

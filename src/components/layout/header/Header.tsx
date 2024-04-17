@@ -3,9 +3,10 @@ import logo from "../../../assets/images/icons/Logo.svg"
 import LocationBtn from '../../ui/location-btn/LocationBtn';
 import HeaderCart from '../../ui/header-cart/HeaderCart';
 import { Link } from 'react-router-dom';
+import { FC } from 'react';
 
 
-export default function Header() {
+const Header: FC = () => {
   return (
     <header className={styles.header}>
       <div className="container">
@@ -20,3 +21,5 @@ export default function Header() {
     </header>
   );
 }
+
+export default Header

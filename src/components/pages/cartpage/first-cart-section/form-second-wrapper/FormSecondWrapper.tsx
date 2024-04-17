@@ -25,23 +25,23 @@ const FormSecondWrapper: FC<FormSecondWrapperProps> = ({ register, errors, setVa
   const paymentDebitRef = useRef<HTMLInputElement>(null)
   const paymentCashRef = useRef<HTMLInputElement>(null)
 
-  const doRadioChecked = (option: ActiveStatusType) => { 
+  const doRadioChecked = (option: ActiveStatusType): void => { 
     setActiveStatus(option)
     if (option === 'credit') {
       if (paymentCreditRef.current) {
         paymentCreditRef.current.checked = true
+        setValue('payment', 'Cartão de crédito');
       }
-      setValue('payment', 'Cartão de crédito');
     } else if (option === 'debit') {
       if (paymentDebitRef.current) {
         paymentDebitRef.current.checked = true
+        setValue('payment', 'Cartão de débito');
       }
-      setValue('payment', 'Cartão de débito');
     } else if (option === 'cash') {
       if (paymentCashRef.current) {
         paymentCashRef.current.checked = true
+        setValue('payment', 'Dinheiro');
       }
-      setValue('payment', 'Dinheiro');
     }
   }
   return (

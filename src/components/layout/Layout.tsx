@@ -1,13 +1,14 @@
-import { Link, Outlet } from "react-router-dom";
-import styles from "./Layout.module.sass";
+import { Outlet } from "react-router-dom";
 import Header from "./header/Header.tsx";
+import { FC } from "react";
 
-export default function Layout() {
+const Layout: FC = () => {
   return (
     <>
       <Header />
         <Outlet />
-
     </>
-  );
+  )
 }
+
+export default Layout
