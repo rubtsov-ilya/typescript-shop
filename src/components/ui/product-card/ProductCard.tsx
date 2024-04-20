@@ -14,11 +14,11 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   /*product have: id, title, subtitle, price, count, img, currency */
   const [addToCart, {isLoading: isAddLoading, isError: isAddError}] = useAddToCartMutation()
-  const {isTooManyRequestsError, doServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError} = useServerError()
   
   useEffect(() => {
     if (isAddError) {
-      doServerError();
+      setServerError();
     }
   }, [isAddError])
 

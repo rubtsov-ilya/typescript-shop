@@ -1,7 +1,7 @@
 import styles from './Remover.module.sass'
 import RemoverSvg from '../../../assets/images/cart-page-icons/remover.svg?react'
 import {  useDeleteFromCartMutation } from "../../../redux/index";
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect } from 'react';
 import useServerError from '../../../hooks/useServerError';
 
 interface RemoverProps {
@@ -10,12 +10,12 @@ interface RemoverProps {
 
 const Remover: FC<RemoverProps> = ({ cardState }) => {
   const [deleteFromCart, {isLoading: isDeleteLoading, isError: isDeleteError}] = useDeleteFromCartMutation()
-  const {isTooManyRequestsError, doServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError} = useServerError()
 
   /* spam timer */
   useEffect(() => {
     if (isDeleteError) {
-      doServerError();
+      setServerError();
     }
   }, [isDeleteError])
 

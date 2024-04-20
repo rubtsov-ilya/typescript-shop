@@ -16,13 +16,13 @@ interface ProductCounterProps {
 const ProductCounter: FC<ProductCounterProps> = ({ smallModifier, cardState }) => {
   const [deleteFromCart, { isLoading: isDeleteLoading, isError: isDeleteError }] = useDeleteFromCartMutation()
   const [changeCount, { isLoading: isChangeLoading, isError: isChangeError }] = useChangeCountMutation()
-  const {isTooManyRequestsError, doServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError} = useServerError()
 
   const changedId = cardState.mockid
   /* spam timer */
   useEffect(() => {
     if (isChangeError || isDeleteError) {
-      doServerError();
+      setServerError();
     }
   }, [isChangeError, isDeleteError])
 

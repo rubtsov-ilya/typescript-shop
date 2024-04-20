@@ -1,4 +1,4 @@
 export interface IValueServerError {
   isTooManyRequestsError: boolean;
-  doServerError: () => void
+  setServerError: () => void
 }

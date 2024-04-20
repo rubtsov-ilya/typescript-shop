@@ -17,11 +17,11 @@ interface FormProps {
 const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
   const [deleteFromCart, { isError: isDeleteError }] = useDeleteFromCartMutation()
   const navigate = useNavigate();
-  const {isTooManyRequestsError, doServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError} = useServerError()
 
   useEffect(() => {
     if (isDeleteError) {
-      doServerError();
+      setServerError();
     }
   }, [isDeleteError])
   

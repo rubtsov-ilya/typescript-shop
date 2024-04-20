@@ -23,7 +23,7 @@ const ServerErrorProvider: FC<ServerErrorProviderProps> = ({ children }) => {
     }
   }, [isTooManyRequestsError])
   
-  const doServerError = (): void => { 
+  const setServerError = (): void => { 
     if (isTooManyRequestsError === false) {
       setIsTooManyRequestsError(true)
     } else {
@@ -31,7 +31,7 @@ const ServerErrorProvider: FC<ServerErrorProviderProps> = ({ children }) => {
     }
   }
 
-  const value: IValueServerError = {isTooManyRequestsError, doServerError}
+  const value: IValueServerError = {isTooManyRequestsError, setServerError}
   // get in components
   // const {isTooManyRequestsError, doServerError} = useServerError()
   return (
