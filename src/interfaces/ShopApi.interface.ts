@@ -8,6 +8,10 @@ interface IShopApiDataItem {
   img: string;
 }
 
+interface IShopApiCartItem extends IShopApiDataItem{
+  mockid: string;
+}
+
 interface IShopApiDataQuery {
   data: IShopApiDataItem[];
   isLoading?: boolean;

@@ -6,7 +6,7 @@ import ProductCounter from "../product-counter/ProductCounter.jsx";
 import { FC } from "react";
 
 interface ProductCardProps {
-  cart: IShopApiDataItem[];
+  cart: IShopApiCartItem[];
   product: IShopApiDataItem;
 }
 
@@ -18,7 +18,7 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
 
 
   async function handleAddProduct(product: IShopApiDataItem) {
-    await addToCart({product}).unwrap()
+    await addToCart({product: product}).unwrap()
   }
 
   return (

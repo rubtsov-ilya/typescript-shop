@@ -9,14 +9,13 @@ import { FC } from 'react';
 
 interface ProductCounterProps {
   smallModifier?: boolean;
-  cardState: IShopApiDataItem;
+  cardState: IShopApiCartItem;
 }
 
 const ProductCounter: FC<ProductCounterProps> = ({ smallModifier, cardState }) => {
   const [deleteFromCart] = useDeleteFromCartMutation()
   const [changeCount] = useChangeCountMutation()
-
-  const changedId = cardState.id
+  const changedId = cardState.mockid
 
   async function handleChangeCount(symbol: ('-' | '+')): Promise<void> {
     let countChanger = cardState.count

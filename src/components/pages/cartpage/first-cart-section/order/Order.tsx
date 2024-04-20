@@ -6,7 +6,7 @@ import OrderPrices from '../order-prices/OrderPrices'
 import styles from './Order.module.sass'
 
 interface OrderProps {
-  cart: IShopApiDataItem[];
+  cart: IShopApiCartItem[];
   doFormSubmit: () => void
   isErrorCart: boolean
   isLoadingCart: boolean

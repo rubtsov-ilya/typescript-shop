@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const shopApi = createApi({
   reducerPath: 'shopApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://6623b27c3e17a3ac846fe8ef.mockapi.io/' }),
   tagTypes: ['Products', 'Cart'],
   endpoints: (build) => ({
     /* QUERY */
@@ -18,7 +18,7 @@ export const shopApi = createApi({
           : [{ type: 'Products', id: 'LIST' }],
     }),
     /* Cart */
-    getCart: build.query<IShopApiDataItem[], void>({
+    getCart: build.query<IShopApiCartItem[], void>({
       query: () => `cart`,
       providesTags: (result) =>
         result
@@ -34,7 +34,9 @@ export const shopApi = createApi({
       query: ({product}) => ({
         url: `cart`,
         method: 'POST',
-        body: product,
+        body: {
+          ...product,
+        },
       }),
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
@@ -42,7 +44,8 @@ export const shopApi = createApi({
     changeCount: build.mutation<IShopApiDataItem, { id: string, count: number}>({
       query: ({id, count}) => ({
         url: `cart/${id}`,
-        method: 'PATCH',
+        method: 'PUT',
+        /* тут stringify, т.к. число передаём обычное, а выше сразу json полученный с сервака */
         body: JSON.stringify({count: count}),
         headers: {
           'Content-Type': 'application/json',

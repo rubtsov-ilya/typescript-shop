@@ -4,7 +4,7 @@ import {  useDeleteFromCartMutation } from "../../../redux/index";
 import { FC } from 'react';
 
 interface RemoverProps {
-  cardState: IShopApiDataItem
+  cardState: IShopApiCartItem
 }
 
 const Remover: FC<RemoverProps> = ({ cardState }) => {
@@ -14,7 +14,7 @@ const Remover: FC<RemoverProps> = ({ cardState }) => {
   }
 
   return (
-    <button onClick={() => handleClick(cardState.id)} className={styles["remover"]}>
+    <button onClick={() => handleClick(cardState.mockid)} className={styles["remover"]}>
       <RemoverSvg className={styles["remover__svg"]} width='16' height='17' />
       <p className={styles["remover__text"]}>Remover</p>
     </button>

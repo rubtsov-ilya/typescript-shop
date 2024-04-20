@@ -4,7 +4,7 @@ import Remover from '../remover/Remover'
 import styles from './OrderCard.module.sass'
 
 interface OrderCardProps {
-  cartItem: IShopApiDataItem
+  cartItem: IShopApiCartItem
 }
 
 const OrderCard: FC<OrderCardProps> = ({ cartItem }) => {
@@ -23,7 +23,7 @@ const OrderCard: FC<OrderCardProps> = ({ cartItem }) => {
           </div>
         </div>
         <div className={styles["order-card__price-wrapper"]}>
-          <p className={styles["order-card__price"]}>{cartItem.currency} {(parseFloat(cartItem.price.replace(",", ".")) * cartItem.count).toFixed(2)}</p>
+          <p className={styles["order-card__price"]}>{cartItem.currency} {(parseFloat(cartItem.price.replace(",", ".")) * cartItem.count).toFixed(2).replace(/\./, ',')}</p>
         </div>
       </div>
       <hr className={styles["order-card__stroke"]}></hr>
