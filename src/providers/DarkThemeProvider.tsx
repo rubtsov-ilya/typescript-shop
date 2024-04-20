@@ -1,11 +1,11 @@
 import React, { FC, createContext, useEffect, useLayoutEffect, useState } from 'react'
-import { IValue } from '../interfaces/DarkThemeValue.interface'
+import { IValueDarkTheme } from '../interfaces/DarkThemeValue.interface'
 
 interface DarkThemeProviderProps {
   children: React.ReactNode
 }
 
-export const darkThemeContext = createContext<IValue | null>(null)
+export const darkThemeContext = createContext<IValueDarkTheme | null>(null)
 
 const DarkThemeProvider: FC<DarkThemeProviderProps> = ({ children }) => {
   const bodyTag = document.querySelector('body') as HTMLBodyElement
@@ -39,7 +39,7 @@ const DarkThemeProvider: FC<DarkThemeProviderProps> = ({ children }) => {
     setIsDarkTheme((prev) => !prev)
    }
    
-  const value: IValue = { isDarkTheme, changeDarkThemeState }
+  const value: IValueDarkTheme = { isDarkTheme, changeDarkThemeState }
   // получение в компонентах
   // const {isDarkTheme, changeDarkThemeState} = useDarkTheme()
   return (

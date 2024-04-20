@@ -1,4 +1,4 @@
-export interface IValue {
+export interface IValueDarkTheme {
   isDarkTheme: boolean;
   changeDarkThemeState: () => void
 }

@@ -3,7 +3,8 @@ import { useAddToCartMutation } from "../../../redux";
 import AddToCartBtn from "../add-to-cart-btn/AddToCartBtn.jsx";
 import LinkToCartBtn from "../link-to-cart-btn/LinkToCartBtn.jsx";
 import ProductCounter from "../product-counter/ProductCounter.jsx";
-import { FC } from "react";
+import { FC, useEffect } from "react";
+import useServerError from "../../../hooks/useServerError.js";
 
 interface ProductCardProps {
   cart: IShopApiCartItem[];
@@ -12,12 +13,23 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   /*product have: id, title, subtitle, price, count, img, currency */
-  const [addToCart] = useAddToCartMutation()
+  const [addToCart, {isLoading: isAddLoading, isError: isAddError}] = useAddToCartMutation()
+  const {isTooManyRequestsError, doServerError} = useServerError()
+  
+  useEffect(() => {
+    if (isAddError) {
+      doServerError();
+    }
+  }, [isAddError])
 
   const cardState = cart.find((item) => { return item.id === product.id})
 
 
-  async function handleAddProduct(product: IShopApiDataItem) {
+  async function handleAddProduct(product: IShopApiDataItem): Promise<void> {
+    if (isTooManyRequestsError) {
+      alert('Too many requests to MockApi, await 20 seconds');
+      return
+    }
     await addToCart({product: product}).unwrap()
   }
 
@@ -42,7 +54,7 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
             </span>
           </p>
         </div>
-        {!cardState && <AddToCartBtn onClick={() => handleAddProduct(product)}/>}
+        {!cardState && <AddToCartBtn isAddLoading={isAddLoading} onClick={() => handleAddProduct(product)}/>}
         {cardState && (
           <div className={styles["product-card__added-wrapper"]}>
             <ProductCounter cardState={cardState}/>

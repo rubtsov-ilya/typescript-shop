@@ -9,7 +9,7 @@ export const shopApi = createApi({
     /* Products */
     getProducts: build.query<IShopApiDataItem[], void>({
       query: () => `products`,
-      providesTags: (result) =>
+      providesTags: (result): any =>
         result
           ? [
               { type: 'Products', id: 'LIST' },
@@ -20,7 +20,7 @@ export const shopApi = createApi({
     /* Cart */
     getCart: build.query<IShopApiCartItem[], void>({
       query: () => `cart`,
-      providesTags: (result) =>
+      providesTags: (result): any =>
         result
           ? [
               { type: 'Cart', id: 'LIST' },

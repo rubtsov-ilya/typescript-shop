@@ -1,20 +1,34 @@
 import styles from './Remover.module.sass'
 import RemoverSvg from '../../../assets/images/cart-page-icons/remover.svg?react'
 import {  useDeleteFromCartMutation } from "../../../redux/index";
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
+import useServerError from '../../../hooks/useServerError';
 
 interface RemoverProps {
   cardState: IShopApiCartItem
 }
 
 const Remover: FC<RemoverProps> = ({ cardState }) => {
-  const [deleteFromCart] = useDeleteFromCartMutation()
+  const [deleteFromCart, {isLoading: isDeleteLoading, isError: isDeleteError}] = useDeleteFromCartMutation()
+  const {isTooManyRequestsError, doServerError} = useServerError()
+
+  /* spam timer */
+  useEffect(() => {
+    if (isDeleteError) {
+      doServerError();
+    }
+  }, [isDeleteError])
+
   async function handleClick(id: string): Promise<void> {
+    if (isTooManyRequestsError) {
+      alert('Too many requests to MockApi, await 20 seconds');
+      return
+    }
     await deleteFromCart({id: id}).unwrap()
   }
 
   return (
-    <button onClick={() => handleClick(cardState.mockid)} className={styles["remover"]}>
+    <button disabled={isDeleteLoading} onClick={() => handleClick(cardState.mockid)} className={styles["remover"]}>
       <RemoverSvg className={styles["remover__svg"]} width='16' height='17' />
       <p className={styles["remover__text"]}>Remover</p>
     </button>

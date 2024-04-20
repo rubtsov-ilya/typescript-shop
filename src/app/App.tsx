@@ -7,22 +7,25 @@ import Cartpage from "../components/pages/cartpage/Cartpage.tsx";
 import ScrollToTopProvider from "../providers/ScrollToTopProvider.tsx";
 import Deliverypage from "../components/pages/deliverypage/Deliverypage.tsx";
 import DarkThemeProvider from "../providers/DarkThemeProvider.tsx";
+import ServerErrorProvider from "../providers/ServerErrorProvider.tsx";
 
 export default function App() {
   return (
     <BodyLockProvider>
       <DarkThemeProvider>
-        <BrowserRouter>
-          <ScrollToTopProvider />
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Homepage />} />
-              <Route path="cart" element={<Cartpage />} />
-              <Route path="delivery" element={<Deliverypage />} />
-              <Route path="*" element={<Notfoundpage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+        <ServerErrorProvider>
+          <BrowserRouter>
+            <ScrollToTopProvider />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Homepage />} />
+                <Route path="cart" element={<Cartpage />} />
+                <Route path="delivery" element={<Deliverypage />} />
+                <Route path="*" element={<Notfoundpage />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </ServerErrorProvider>
       </DarkThemeProvider>
     </BodyLockProvider>
   );

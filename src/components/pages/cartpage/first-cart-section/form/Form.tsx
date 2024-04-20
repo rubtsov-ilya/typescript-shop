@@ -4,20 +4,33 @@ import FormSecondWrapper from '../form-second-wrapper/FormSecondWrapper'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useDeleteFromCartMutation } from '../../../../../redux/index'
 import { useNavigate } from 'react-router-dom'
-import { FC, RefObject } from 'react'
+import { FC, RefObject, useEffect } from 'react'
 import { IFormValues } from '../../../../../interfaces/FormValues.interface'
+import useServerError from '../../../../../hooks/useServerError'
 
 interface FormProps {
-  cart: IShopApiDataItem[];
+  cart: IShopApiCartItem[];
   btnRef: RefObject<HTMLButtonElement>;
   totalSumOrder: number;
 }
 
 const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
-  const [deleteFromCart] = useDeleteFromCartMutation()
+  const [deleteFromCart, { isError: isDeleteError }] = useDeleteFromCartMutation()
   const navigate = useNavigate();
+  const {isTooManyRequestsError, doServerError} = useServerError()
 
+  useEffect(() => {
+    if (isDeleteError) {
+      doServerError();
+    }
+  }, [isDeleteError])
+  
+  
   async function handleClearCart(id: string): Promise<void> {
+    if (isTooManyRequestsError) {
+      console.log('error from server to clearing cart')
+      return
+    }
     await deleteFromCart({id: id}).unwrap()
   }
 
@@ -36,7 +49,7 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
   const handleFormSubmit: SubmitHandler<IFormValues> = (data) => {  
     const fullOrderData = {formInfo: data , order: cart, totalSumOrder}
     /* this should be sending fullOrderData to a real api */
-    cart.map((cartItem) => handleClearCart(cartItem.id))
+    cart.map((cartItem) => handleClearCart(cartItem.mockid))
     reset()
     navigate('/delivery', { state: fullOrderData });
    }

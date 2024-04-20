@@ -4,6 +4,7 @@ import EmptyCartBtn from '../../../../ui/empty-cart-btn/EmptyCartBtn'
 import OrderCard from '../../../../ui/order-card/OrderCard'
 import OrderPrices from '../order-prices/OrderPrices'
 import styles from './Order.module.sass'
+import useServerError from '../../../../../hooks/useServerError'
 
 interface OrderProps {
   cart: IShopApiCartItem[];
@@ -16,17 +17,16 @@ interface OrderProps {
 }
 
 const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, deliveryPrice, sumOrder, totalSumOrder }) => {
-
-
+  const { isTooManyRequestsError } = useServerError()
 
   return (
     <div className={styles["order-wrapper"]}>
       <h4 className={styles["order-wrapper__title"]}>Cafés selecionados</h4>
       <div className={styles["order"]}>
         {/* loading states */}
-        {isErrorCart && (<p className={styles["order__loading-state"]}>Error</p>)}
+        {isErrorCart && !isTooManyRequestsError && (<p className={styles["order__loading-state"]}>Error</p>)}
         {isLoadingCart && (<p className={styles["order__loading-state"]}>Loading</p>)}
-        {!isLoadingCart && cart.length === 0 && (<p className={styles["order__loading-state"]}>Nenhum produto</p>)}
+        {!isLoadingCart && !isErrorCart && cart.length === 0 && (<p className={styles["order__loading-state"]}>Nenhum produto</p>)}
         
         {/* cart items */}
         {cart.map((cartItem) => {
