@@ -3,39 +3,57 @@
 :root
     /* colors */
     --base-white: #fff
-    --base-dark: #403937
+    --base-black: #000000
+    --base-dusky: #181818
+    --base-dusky-light: #292929
+    --base-dark-btn-hover: #2c2c2c
     --base-background: #fafafa
     --base-card: #f3f2f2
     --base-input: #ededed
-    --base-button: #e6e5e5
     --base-hover: #d7d5d5
+    --base-button: #e6e5e5
     --base-label: #8d8686
     --base-text: #574f4d
     --base-subtitle: #403937
     --base-title: #272221
-    --brand-purple-dark: #4b2995
+    --base-underline: #d9d9d9
     --brand-purple: #8047f8
+    --brand-purple-dark: #4b2995
     --brand-purple-light: #ebe5f9
     --brand-purple-hover: #5b32b5
-    --brand---yellow-dark: #c47f17
+    --brand-purple-hover-light: #9f72ff
     --brand---yellow: #dbac2c
+    --brand---yellow-dark: #c47f17
     --brand-yellow-light: #f1e9c9
-
     /* light mode */
     /* text color */
-
+    --text-accent: var(--base-title)
+    --text-title: var(--base-subtitle)
+    --text: var(--base-text)
+    --text-light: var(--base-label)
+    /* underline */
+    --underline: var(--base-underline)
     /* background */
     --bg-base: var(--base-background)
     --bg-form: var(--base-card)
-    --bg-dark-mode: var(--base-dark)
-
-    /* cards */
+    --bg-card: var(--base-card)
+    /* inputs */
+    --input-label: var(--base-label)
+    --input: var(--base-input)
+    /* logo text */
+    --logo-text: var(--base-subtitle)
+    /* button */
+    --button: var(--base-button)
+    --button-hover: var(--base-hover)
+    --button-active: var(--brand-purple-light)
+    --button-border: var(--brand-purple)
 
     /* ui elements */
     --ui-purple: var(--brand-purple)
     --ui-purple-dark: var(--brand-purple-dark)
     --ui-purple-light: var(--brand-purple-light)
     --ui-purple-hover: var(--brand-purple-hover)
+    --ui-purple-hover-icons: var(--brand-purple-hover)
     --ui-yellow: var(--brand---yellow)
     --ui-yellow-light: var(--brand-yellow-light)
     --ui-yellow-dark: var(--brand---yellow-dark)
@@ -44,7 +62,34 @@
     --font-family: "Roboto", sans-serif
     --second-family: "Baloo 2", sans-serif
     --third-family: "Roboto Condensed", sans-serif
-    
     .dark
-        /* dark mode */
-        /* --bg-base: var(--base-dark) */
+        /* text color */
+        --text-accent: var(--base-background)
+        --text-title: var(--base-input)
+        --text: var(--base-hover)
+        --text-light: var(--base-label)
+        /* underline */
+        --underline: var(--base-dusky)
+        /* background */
+        --bg-base: var(--base-black)
+        --bg-form: var(--base-dusky)
+        --bg-card: var(--base-dusky)
+        /* inputs */
+        --input-label: var(--base-label)
+        --input: null
+        /* logo text */
+        --logo-text: var(--base-background)
+        /* button */
+        --button: var(--base-dusky-light)
+        --button-hover: var(--base-dark-btn-hover)
+        --button-active: var(--base-dark-btn-hover)
+        --button-border: var(--base-button)
+        /* ui elements */
+        --ui-purple: var(--brand-purple)
+        --ui-purple-dark: var(--brand-purple-dark)
+        --ui-purple-light: var(--brand-purple-light)
+        --ui-purple-hover: var(--brand-purple-hover)
+        --ui-purple-hover-icons: var( --brand-purple-hover-light)
+        --ui-yellow: var(--brand---yellow)
+        --ui-yellow-light: var(--brand-yellow-light)
+        --ui-yellow-dark: var(--brand---yellow-dark)

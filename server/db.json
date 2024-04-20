@@ -109,15 +109,5 @@
       "img": "../../../src/assets/images/coffee/Image12.png"
     }
   ],
-  "cart": [
-    {
-      "id": "2",
-      "title": "Expresso Americano",
-      "subtitle": "Expresso diluído, menos intenso que o tradicional",
-      "price": "8,90",
-      "currency": "R$",
-      "count": 1,
-      "img": "../../../src/assets/images/coffee/Image2.png"
-    }
-  ]
+  "cart": []
 }

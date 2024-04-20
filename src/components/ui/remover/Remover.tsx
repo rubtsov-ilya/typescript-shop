@@ -1,13 +1,17 @@
 import styles from './Remover.module.sass'
 import RemoverSvg from '../../../assets/images/cart-page-icons/remover.svg?react'
 import {  useDeleteFromCartMutation } from "../../../redux/index";
+import { FC } from 'react';
 
-export default function Remover({ cardState }) {
+interface RemoverProps {
+  cardState: IShopApiDataItem
+}
+
+const Remover: FC<RemoverProps> = ({ cardState }) => {
   const [deleteFromCart] = useDeleteFromCartMutation()
-  async function handleClick(id) {
+  async function handleClick(id: string): Promise<void> {
     await deleteFromCart({id: id}).unwrap()
   }
-
 
   return (
     <button onClick={() => handleClick(cardState.id)} className={styles["remover"]}>
@@ -16,3 +20,4 @@ export default function Remover({ cardState }) {
     </button>
   )
 }
+export default Remover

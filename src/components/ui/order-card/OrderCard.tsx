@@ -1,8 +1,13 @@
+import { FC } from 'react'
 import ProductCounter from '../product-counter/ProductCounter'
 import Remover from '../remover/Remover'
 import styles from './OrderCard.module.sass'
 
-export default function OrderCard({ cartItem }) {
+interface OrderCardProps {
+  cartItem: IShopApiDataItem
+}
+
+const OrderCard: FC<OrderCardProps> = ({ cartItem }) => {
   /*cartItem have: id, title, subtitle, price, count, img, currency */
   return (
     <>
@@ -18,10 +23,11 @@ export default function OrderCard({ cartItem }) {
           </div>
         </div>
         <div className={styles["order-card__price-wrapper"]}>
-          <p className={styles["order-card__price"]}>{cartItem.currency} {cartItem.price}</p>
+          <p className={styles["order-card__price"]}>{cartItem.currency} {(parseFloat(cartItem.price.replace(",", ".")) * cartItem.count).toFixed(2)}</p>
         </div>
       </div>
       <hr className={styles["order-card__stroke"]}></hr>
     </>
   )
 }
+export default OrderCard

@@ -30,7 +30,7 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
     setValue,
     reset,
   } = useForm<IFormValues>({
-    mode: "onBlur"
+    mode: "onSubmit"
   })
 
   const handleFormSubmit: SubmitHandler<IFormValues> = (data) => {  

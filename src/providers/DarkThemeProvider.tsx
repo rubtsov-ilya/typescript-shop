@@ -12,13 +12,16 @@ const DarkThemeProvider: FC<DarkThemeProviderProps> = ({ children }) => {
   const [isDarkTheme, setIsDarkTheme] = useState<boolean>(false)
 
   useLayoutEffect(() => {
+    const isDeviceDarkTheme: boolean = window.matchMedia('(prefers-color-scheme: dark)').matches
     const theme = localStorage.getItem('theme');
     if (theme === 'dark') {
       setIsDarkTheme(true)
     } else if (theme === 'light') {
       setIsDarkTheme(false)
-    } else {
-      return
+    } else if (!theme && isDeviceDarkTheme) {
+      setIsDarkTheme(true)
+    } else if (!theme && !isDeviceDarkTheme) {
+      localStorage.setItem('theme', 'light')
     }
   }, [])
 
@@ -35,7 +38,7 @@ const DarkThemeProvider: FC<DarkThemeProviderProps> = ({ children }) => {
   const changeDarkThemeState = () => { 
     setIsDarkTheme((prev) => !prev)
    }
-
+   
   const value: IValue = { isDarkTheme, changeDarkThemeState }
   // получение в компонентах
   // const {isDarkTheme, changeDarkThemeState} = useDarkTheme()

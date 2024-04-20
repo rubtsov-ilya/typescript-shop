@@ -10,8 +10,8 @@ interface FormFirstWrapperProps {
 }
 
 const FormFirstWrapper: FC<FormFirstWrapperProps> = ({ register, errors }) => {
-
   
+  console.log(errors.phone)
   return (
     <div className={styles["first-wrapper"]}>
       <div className={styles["first-wrapper__title-wrapper"]}>
@@ -31,14 +31,17 @@ const FormFirstWrapper: FC<FormFirstWrapperProps> = ({ register, errors }) => {
       </div>
     
       <div className={styles["first-wrapper__grid"]}>
+        { errors.phone && errors.phone.type === "minLength" && <label className={styles["label__phone-error"]} htmlFor="phone">{errors.phone.message}</label>}
         <input
           {...register("phone", {
             required: true,
-            minLength: 11,
+            minLength: {
+              value: 11,
+              message: "Сomprimento mínimo 11 caracteres"
+            },
           })}
           className={ errors.phone ? `${styles["input__tel"]} ${styles["input__error"]}` : `${styles["input__tel"]}`}
           type="number"
-
           placeholder="Número de telefone"
         />
         <div></div>

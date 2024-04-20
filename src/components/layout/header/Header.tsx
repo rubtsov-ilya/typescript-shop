@@ -1,5 +1,5 @@
 import styles from './Header.module.sass'
-import logo from "../../../assets/images/icons/Logo.svg"
+import Logo from "../../../assets/images/icons/Logo.svg?react"
 import LocationBtn from '../../ui/location-btn/LocationBtn';
 import HeaderCart from '../../ui/header-cart/HeaderCart';
 import { Link } from 'react-router-dom';
@@ -12,10 +12,10 @@ const Header: FC = () => {
     <header className={styles["header"]}>
       <div className="container">
         <div className={styles["header__content"]}>
-          <Link to={"/"}><img className={styles["header__logo"]} src={logo} alt="Logo" /></Link>
+          <Link to={"/"}><Logo className={styles["header__logo"]}/></Link>
           <div className={styles["header__right-wrapper"]}>
             <DarkModeBtn />
-              <LocationBtn />
+            <LocationBtn />
             <HeaderCart />
           </div>
         </div>

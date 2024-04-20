@@ -7,8 +7,9 @@ import useDarkTheme from "../../../hooks/useDarkTheme";
 const DarkModeBtn: FC = () => {
   const {isDarkTheme, changeDarkThemeState} = useDarkTheme()
   return (
-    <button onClick={changeDarkThemeState} className={styles["mode-btn"]}>
-      <MoonSvg className={styles["moon-svg"]} />
+    <button onClick={changeDarkThemeState} className={isDarkTheme ? `${styles["mode-btn"]} ${styles["active"]}` : `${styles["mode-btn"]}` }>
+      {!isDarkTheme && <MoonSvg className={styles["moon-svg"]} />}
+      {isDarkTheme && <SunSvg className={styles["sun-svg"]} />}
     </button>
   );
 };
