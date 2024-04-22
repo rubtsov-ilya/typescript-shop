@@ -10,8 +10,6 @@ interface FormFirstWrapperProps {
 }
 
 const FormFirstWrapper: FC<FormFirstWrapperProps> = ({ register, errors }) => {
-  
-  console.log(errors.phone)
   return (
     <div className={styles["first-wrapper"]}>
       <div className={styles["first-wrapper__title-wrapper"]}>

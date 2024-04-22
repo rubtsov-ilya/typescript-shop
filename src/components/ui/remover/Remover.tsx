@@ -3,6 +3,7 @@ import RemoverSvg from '../../../assets/images/cart-page-icons/remover.svg?react
 import {  useDeleteFromCartMutation } from "../../../redux/index";
 import { FC, useEffect } from 'react';
 import useServerError from '../../../hooks/useServerError';
+import { IValueServerError } from '../../../interfaces/ServerErrorValue.interface';
 
 interface RemoverProps {
   cardState: IShopApiCartItem
@@ -10,7 +11,7 @@ interface RemoverProps {
 
 const Remover: FC<RemoverProps> = ({ cardState }) => {
   const [deleteFromCart, {isLoading: isDeleteLoading, isError: isDeleteError}] = useDeleteFromCartMutation()
-  const {isTooManyRequestsError, setServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
 
   /* spam timer */
   useEffect(() => {

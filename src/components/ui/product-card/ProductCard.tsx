@@ -5,6 +5,7 @@ import LinkToCartBtn from "../link-to-cart-btn/LinkToCartBtn.jsx";
 import ProductCounter from "../product-counter/ProductCounter.jsx";
 import { FC, useEffect } from "react";
 import useServerError from "../../../hooks/useServerError.js";
+import { IValueServerError } from "../../../interfaces/ServerErrorValue.interface.js";
 
 interface ProductCardProps {
   cart: IShopApiCartItem[];
@@ -14,7 +15,7 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   /*product have: id, title, subtitle, price, count, img, currency */
   const [addToCart, {isLoading: isAddLoading, isError: isAddError}] = useAddToCartMutation()
-  const {isTooManyRequestsError, setServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
   
   useEffect(() => {
     if (isAddError) {

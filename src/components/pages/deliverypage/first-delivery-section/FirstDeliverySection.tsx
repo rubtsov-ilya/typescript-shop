@@ -1,6 +1,7 @@
 import styles from './FirstDeliverySection.module.sass'
 import OrderInfo from './order-info/OrderInfo'
 import DeliveryIllustration from '../../../../assets/images/delivery-Illustration.svg?react'
+import deliveryIllustration from '../../../../assets/images/delivery-Illustration.svg'
 import { IFormValues } from '../../../../interfaces/FormValues.interface'
 import { FC } from 'react'
 
@@ -17,7 +18,8 @@ const FirstDeliverySection: FC<FirstDeliverySectionProps> = ({ orderData }) => {
           <p className={styles["first-section__subtitle"]}>Agora é só aguardar que logo o café chegará até você</p>
           <div className={styles["first-section__content-wrapper"]}>
             <OrderInfo orderData={orderData}/>
-            <DeliveryIllustration width='492' className={styles["first-section__illustration"]}/>
+            <img src={deliveryIllustration} alt="Illustration"  className={styles["first-section__illustration"]}/>
+            {/* <DeliveryIllustration width='492' className={styles["first-section__illustration"]}/> */}
           </div>
         </div>
       </div>

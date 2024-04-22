@@ -7,6 +7,7 @@ import Plus from '../../../assets/images/icons/plus.svg?react'
 import { useChangeCountMutation, useDeleteFromCartMutation } from "../../../redux";
 import { FC, useEffect } from 'react';
 import useServerError from '../../../hooks/useServerError';
+import { IValueServerError } from './../../../interfaces/ServerErrorValue.interface';
 
 interface ProductCounterProps {
   smallModifier?: boolean;
@@ -16,7 +17,7 @@ interface ProductCounterProps {
 const ProductCounter: FC<ProductCounterProps> = ({ smallModifier, cardState }) => {
   const [deleteFromCart, { isLoading: isDeleteLoading, isError: isDeleteError }] = useDeleteFromCartMutation()
   const [changeCount, { isLoading: isChangeLoading, isError: isChangeError }] = useChangeCountMutation()
-  const {isTooManyRequestsError, setServerError} = useServerError()
+  const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
 
   const changedId = cardState.mockid
   /* spam timer */

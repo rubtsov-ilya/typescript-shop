@@ -26,7 +26,7 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
   }, [isDeleteError])
   
   
-  async function handleClearCart(id: string): Promise<void> {
+  async function clearCart(id: string): Promise<void> {
     if (isTooManyRequestsError) {
       console.log('error from server to clearing cart')
       return
@@ -48,9 +48,10 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
 
   const handleFormSubmit: SubmitHandler<IFormValues> = (data) => {  
     const fullOrderData = {formInfo: data , order: cart, totalSumOrder}
-    /* this should be sending fullOrderData to a real api */
-    cart.map((cartItem) => handleClearCart(cartItem.mockid))
+    /* this should be sending fullOrderData to a real api and clear the cart */
+    /* cart.map((cartItem) => clearCart(cartItem.mockid)) */
     reset()
+    alert(`the cart should be cleared, but mockapi doesn't support it`)
     navigate('/delivery', { state: fullOrderData });
    }
 
