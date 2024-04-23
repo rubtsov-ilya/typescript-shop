@@ -7,7 +7,7 @@ export const shopApi = createApi({
   endpoints: (build) => ({
     /* QUERY */
     /* Products */
-    getProducts: build.query<IShopApiDataItem[], {sortBy: string, order: string, title?: string}>({
+    getProducts: build.query<IShopApiDataItem[], {sortBy: 'title' | 'price', order: 'asc' | 'desc', title: string}>({
       query: ({sortBy, order, title = ''}) => ({
         url: `products`,
         params: {

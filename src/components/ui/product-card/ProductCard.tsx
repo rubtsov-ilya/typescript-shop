@@ -16,7 +16,6 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   /*product have: id, title, subtitle, price, count, img, currency */
   const [addToCart, {isLoading: isAddLoading, isError: isAddError}] = useAddToCartMutation()
   const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
-  
   useEffect(() => {
     if (isAddError) {
       setServerError();

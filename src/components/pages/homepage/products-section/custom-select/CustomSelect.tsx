@@ -3,12 +3,40 @@ import './CustomSelec.sass'
 import { FC } from "react";
 import { ISelectOptions } from "../../../../../interfaces/SelectOptions.interface";
 import { SingleValue } from 'react-select';
+import { SortParams } from "../../../../../interfaces/SortParams.interface";
 
 interface CustomSelectProps {
-  handleChangeSelect: (value: SingleValue<ISelectOptions>) => void
+  setSortParams: React.Dispatch<React.SetStateAction<SortParams>>
 }
 
-const CustomSelect: FC<CustomSelectProps> = ({handleChangeSelect}) => {
+const CustomSelect: FC<CustomSelectProps> = ({ setSortParams }) => {
+
+  const handleChangeSelect = (selectValue: SingleValue<ISelectOptions>): void => { 
+    if (selectValue) {
+      if (selectValue.value === 'title') {
+        setSortParams({
+          sortBy: 'title',
+          order: 'asc'
+        })
+      } else if (selectValue.value === 'title-reverce') {
+        setSortParams({
+          sortBy: 'title',
+          order: 'desc'
+        })
+      } else if (selectValue.value === 'price') {
+        setSortParams({
+          sortBy: 'price',
+          order: 'asc'
+        })
+      } else if (selectValue.value === 'price-reverce') {
+        setSortParams({
+          sortBy: 'price',
+          order: 'desc'
+        })
+      }
+    }
+  }
+
   const selectOptions: ISelectOptions[] = [
     { value: 'title', label: 'Nome' },
     { value: 'title-reverce', label: 'Nome reverso' },
