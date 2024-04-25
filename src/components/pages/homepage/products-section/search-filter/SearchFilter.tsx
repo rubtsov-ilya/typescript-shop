@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './SearchFilter.module.sass'
 import SearchSvg from '../../../../../assets/images/icons/search.svg?react'
+import ClearSvg from '../../../../../assets/images/icons/clear.svg?react'
 
 interface SearchFilterProps {
   setSearchParameter: React.Dispatch<React.SetStateAction<string>>;
@@ -49,13 +50,27 @@ const SearchFilter: FC<SearchFilterProps> = ({ setSearchParameter }) => {
     }
   }
 
+  const handleClearButtonClick = (): void => { 
+    setInputSearchValue('')
+    setSearchParameter('')
+   }
 
   return (
-      <div className={styles["search-filter"]}>
-        <input onKeyDown={handleSearchKeyDown} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputSearchValue(e.target.value)} value={inputSearchValue} className={styles["search-filter__input"]} placeholder="Procura por nome" type="text" />
-        <button onClick={handleSearchButtonClick} className={styles["search-filter__button"]}>
-          <SearchSvg className={styles["search-filter__icon"]}/>
-        </button>
+      <div className={styles["search"]}>
+        <input onKeyDown={handleSearchKeyDown} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputSearchValue(e.target.value)} value={inputSearchValue} className={styles["search__input"]} placeholder="Procura por nome" type="text" />
+        <div className={styles["search__controls"]}>
+          {inputSearchValue && (
+            <>
+              <button onClick={handleClearButtonClick} className={styles["search__clear-button"]}>
+                <ClearSvg className={styles["search__clear-icon"]}/>
+              </button>
+              <span className={styles["search__buttons-separator"]}></span>
+            </>
+          )}
+          <button onClick={handleSearchButtonClick} className={styles["search__search-button"]}>
+            <SearchSvg className={styles["search__search-icon"]}/>
+          </button>
+        </div>
       </div>
   )
 }

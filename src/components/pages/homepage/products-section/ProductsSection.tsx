@@ -7,6 +7,7 @@ import SearchFilter from "./search-filter/SearchFilter";
 import { SortParams } from "../../../../interfaces/SortParams.interface";
 
 
+type ErrorStatusType = number | "FETCH_ERROR" | "PARSING_ERROR" | "TIMEOUT_ERROR" | "CUSTOM_ERROR" | undefined
 
 const productsSection: FC = () => {
   /* select state */
@@ -17,21 +18,21 @@ const productsSection: FC = () => {
   /* search state*/
   const [searchParameter, setSearchParameter] = useState<string>('');
   /* data query */
-  const { data: products = [], isLoading, isError, error } = useGetProductsQuery({ sortBy: sortParams.sortBy, order: sortParams.order, title: searchParameter });
+  const { data: products = [], isLoading, error, isFetching } = useGetProductsQuery({ sortBy: sortParams.sortBy, order: sortParams.order, title: searchParameter });
   const { data: cart = [] } = useGetCartQuery();
-  console.log(error)
+
+  const errorStatus: ErrorStatusType = error && 'status' in error ? error.status : undefined;
+
   return (
     <section className={styles["products-section"]}>
       <div className="container">
         <div className={styles["products-section__content"]}>
           <h2 className={styles["products-section__title"]}>Nossos cafés</h2>
 
-
           <div className={styles["products-section__filters-wrapper"]}>
             <SearchFilter setSearchParameter={setSearchParameter}/>
             <CustomSelect setSortParams={setSortParams} />
           </div>
-          
           
           <div className={styles["products-section__grid"]}>
             {/* server states */}
@@ -42,11 +43,15 @@ const productsSection: FC = () => {
                 ))}
               </p>
             )}
-            {isError && (
+            {errorStatus === 'PARSING_ERROR' && (
               <p className={styles["products-section__error"]}>Error</p>
             )}
+
+            {errorStatus === 404 && (
+              <p className={styles["products-section__error"]}>Não há nada para "{searchParameter}"</p>
+            )}
             {/* cards */}
-            {products.map((product) => {
+            {!errorStatus && !isFetching && products.map((product) => {
               return (
                 <ProductCard key={product.id} product={product} cart={cart} />
               );
@@ -54,9 +59,9 @@ const productsSection: FC = () => {
           </div>
 
           {/* underline */}
-          {!isLoading && !isError ? (
+          {!isLoading && !error && !isFetching && 
             <div className={styles["products-section__underline"]}></div>
-          ) : null}
+          }
         </div>
       </div>
     </section>

@@ -2,15 +2,17 @@
   width: 150px !important
   font-size: 14px !important
   height: 100% !important
+  grid-column-end: 5 !important
+  justify-self: flex-end !important
     
   &__control
     background: var(--bg-base) !important
     cursor: pointer !important
     border-radius: 6px !important
-    border: 1px solid var(--text-title) !important
+    border: 1px solid var(--search-controls-border) !important
     min-height: 100% !important
     &--is-focused
-      border: 1px solid var(--text-title) !important
+      border: 1px solid var(--search-controls-border) !important
       box-shadow: unset !important
 
   &__value-container
@@ -33,14 +35,14 @@
     background: var(--bg-base) !important
     border-radius: 6px !important
     path
-      fill: var(--text-title) !important
+      fill: var(--search-controls-border) !important
 
   &__menu
     color: var(--text-title) !important
     background: var(--bg-card) !important
     padding: 0px !important
     border-radius: 6px !important
-    box-shadow: 0 0 0 0.5px var(--text-title) !important
+    box-shadow: 0 0 0 0.5px var(--search-controls-border) !important
 
   &__menu-list
     padding: 0px !important
