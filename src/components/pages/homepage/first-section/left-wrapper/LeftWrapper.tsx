@@ -1,10 +1,10 @@
 import GridItemFirstSection from '../grid-item/GridItemFirstSection'
 import styles from './LeftWrapper.module.sass'
 
-import gridIcon1 from '../../../../../assets/images/icons/first-section-icon1.svg'
-import gridIcon2 from '../../../../../assets/images/icons/first-section-icon2.svg'
-import gridIcon3 from '../../../../../assets/images/icons/first-section-icon3.svg'
-import gridIcon4 from '../../../../../assets/images/icons/first-section-icon4.svg'
+import gridIcon1 from '../../../../../assets/images/home-page-icons/first-section-icon1.svg'
+import gridIcon2 from '../../../../../assets/images/home-page-icons/first-section-icon2.svg'
+import gridIcon3 from '../../../../../assets/images/home-page-icons/first-section-icon3.svg'
+import gridIcon4 from '../../../../../assets/images/home-page-icons/first-section-icon4.svg'
 import { FC } from 'react'
 
 const LeftWrapper: FC = () => {

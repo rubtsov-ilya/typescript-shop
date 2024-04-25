@@ -1,5 +1,5 @@
 import styles from './LinkToCartBtn.module.sass'
-import cartSvg from '../../../assets/images/icons/ShoppingCartSimple.svg'
+import cartSvg from '../../../assets/images/home-page-icons/ShoppingCartSimple.svg'
 import { Link } from 'react-router-dom'
 import { FC } from 'react'
 

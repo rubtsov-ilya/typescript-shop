@@ -1,8 +1,8 @@
 /// <reference types="vite-plugin-svgr/client" />
 
 import styles from './ProductCounter.module.sass'
-import Minus from '../../../assets/images/icons/minus.svg?react'
-import Plus from '../../../assets/images/icons/plus.svg?react'
+import Minus from '../../../assets/images/home-page-icons/minus.svg?react'
+import Plus from '../../../assets/images/home-page-icons/plus.svg?react'
 
 import { useChangeCountMutation, useDeleteFromCartMutation } from "../../../redux";
 import { FC, useEffect } from 'react';

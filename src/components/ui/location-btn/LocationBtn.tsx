@@ -1,5 +1,5 @@
 import styles from './LocationBtn.module.sass'
-import point from "../../../assets/images/icons/point.svg";
+import point from "../../../assets/images/home-page-icons/point.svg";
 import { FC } from 'react';
 
 const LocationBtn: FC = () => {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from './HeaderCart.module.sass'
-import headerCartSvg from "../../../assets/images/icons/header-cart.svg"
+import headerCartSvg from "../../../assets/images/home-page-icons/header-cart.svg"
 import { FC } from "react";
 import { useGetCartQuery } from "../../../redux/index";
 

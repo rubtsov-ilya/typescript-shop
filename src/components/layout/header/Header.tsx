@@ -1,5 +1,5 @@
 import styles from './Header.module.sass'
-import Logo from "../../../assets/images/icons/Logo.svg?react"
+import Logo from "../../../assets/images/home-page-icons/Logo.svg?react"
 import LocationBtn from '../../ui/location-btn/LocationBtn';
 import HeaderCart from '../../ui/header-cart/HeaderCart';
 import { Link } from 'react-router-dom';

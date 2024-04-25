@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './SearchFilter.module.sass'
-import SearchSvg from '../../../../../assets/images/icons/search.svg?react'
-import ClearSvg from '../../../../../assets/images/icons/clear.svg?react'
+import SearchSvg from '../../../../../assets/images/home-page-icons/search.svg?react'
+import CrossSvg from '../../../../../assets/images/home-page-icons/cross.svg?react'
 
 interface SearchFilterProps {
   setSearchParameter: React.Dispatch<React.SetStateAction<string>>;
@@ -62,7 +62,7 @@ const SearchFilter: FC<SearchFilterProps> = ({ setSearchParameter }) => {
           {inputSearchValue && (
             <>
               <button onClick={handleClearButtonClick} className={styles["search__clear-button"]}>
-                <ClearSvg className={styles["search__clear-icon"]}/>
+                <CrossSvg className={styles["search__cross-icon"]}/>
               </button>
               <span className={styles["search__buttons-separator"]}></span>
             </>
