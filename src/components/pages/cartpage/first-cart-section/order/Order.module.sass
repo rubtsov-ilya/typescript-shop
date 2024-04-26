@@ -1,4 +1,4 @@
-.order-wrapper
+.order
   &__title
     font-family: var(--second-family)
     font-weight: 700
@@ -6,11 +6,11 @@
     line-height: 1.3
     color: var(--text-title)
 
-.order
-  margin-top: 15px
-  border-radius: 6px 44px
-  padding: 40px
-  background-color: var(--bg-card)
+  &__wrapper
+    margin-top: 15px
+    border-radius: 6px 44px
+    padding: 40px
+    background-color: var(--bg-card)
   &__loading-state
     font-family: var(--second-family)
     font-weight: 800
@@ -19,4 +19,10 @@
     color: var(--text-title)
     margin-bottom: 40px
     text-align: center
-
+  &__policy-text
+    margin-top: 24px
+    font-size: 14px
+    color: var(--ui-yellow-dark)
+    cursor: pointer
+    text-align: center
+    text-decoration: underline

@@ -28,9 +28,9 @@ const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart,
 
 
   return (
-    <div className={styles["order-wrapper"]}>
-      <h4 className={styles["order-wrapper__title"]}>Cafés selecionados</h4>
-      <div className={styles["order"]}>
+    <div className={styles["order"]}>
+      <h4 className={styles["order__title"]}>Cafés selecionados</h4>
+      <div className={styles["order__wrapper"]}>
         {/* loading states */}
         {isErrorCart && cart.length === 0 && (<p className={styles["order__loading-state"]}>Error</p>)}
         {isLoadingCart && (<p className={styles["order__loading-state"]}>Loading</p>)}
@@ -48,7 +48,7 @@ const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart,
         {cart.length === 0 && (<EmptyCartBtn />)}
         {cart.length !== 0 && (<ConfirmationBtn doFormSubmit={doFormSubmit} />)}
 
-        <a onClick={handleModalLinkClick}>click to modal</a>
+        <p className={styles["order__policy-text"]} onClick={handleModalLinkClick}>Política de Privacidade para Pedido</p>
 
         <PolicyModal isOpen={isPolicyModalOpen} setIsOpen={setIsPolicyModalOpen}/>
         
