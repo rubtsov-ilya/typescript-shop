@@ -16,6 +16,7 @@ const BodyLockProvider: FC<BodyLockProviderProps> = ({ children }) => {
   const bodyTag = document.querySelector('body') as HTMLBodyElement
   const [isBodyLock, setIsBodyLock] = useState<boolean>(false)
   const [lockPaddingValue, setLockPaddingValue] = useState< number >(0)
+
   useEffect(() => {
     setLockPaddingValue(window.innerWidth - (document.querySelector('#root') as HTMLDivElement).offsetWidth);
   }, [])
@@ -24,8 +25,8 @@ const BodyLockProvider: FC<BodyLockProviderProps> = ({ children }) => {
     bodyTag.classList.toggle('lock');
     setIsBodyLock((prev) => !prev)
    }
-  console.log(lockPaddingValue, isBodyLock)
 
+  console.log(lockPaddingValue, isBodyLock)
    
    const value: IValue = {isBodyLock, lockPaddingValue, toggleBodyLock}
 

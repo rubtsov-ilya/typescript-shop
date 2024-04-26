@@ -5,12 +5,12 @@ import { FC } from 'react'
 
 interface AddToCartBtnProps {
   onClick: () => Promise<void>;
-  isAddLoading: boolean;
+  isAddToCartLoading: boolean;
 }
 
-const AddToCartBtn: FC<AddToCartBtnProps> = ({ onClick, isAddLoading }) => {
+const AddToCartBtn: FC<AddToCartBtnProps> = ({ onClick, isAddToCartLoading }) => {
   return (
-    <button disabled={isAddLoading} onClick={onClick} className={styles["add-to-cart-btn"]}>
+    <button disabled={isAddToCartLoading} onClick={onClick} className={styles["add-to-cart-btn"]}>
       <img className={styles["add-to-cart-btn__icon"]} src={cartSvg} alt="Cart" />
     </button>
   )

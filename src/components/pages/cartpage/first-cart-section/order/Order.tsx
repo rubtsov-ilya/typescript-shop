@@ -1,9 +1,11 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import ConfirmationBtn from '../../../../ui/confirmation-btn/ConfirmationBtn'
 import EmptyCartBtn from '../../../../ui/empty-cart-btn/EmptyCartBtn'
 import OrderCard from '../../../../ui/order-card/OrderCard'
 import OrderPrices from '../order-prices/OrderPrices'
 import styles from './Order.module.sass'
+import PolicyModal from './../../../../ui/policy-modal/PolicyModal';
+import useBodyLock from '../../../../../hooks/useBodyLock'
 
 interface OrderProps {
   cart: IShopApiCartItem[];
@@ -16,6 +18,14 @@ interface OrderProps {
 }
 
 const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, deliveryPrice, sumOrder, totalSumOrder }) => {
+
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false)
+  const { toggleBodyLock } = useBodyLock()
+  const handleModalLinkClick = (): void => { 
+    setIsPolicyModalOpen((prev) => !prev)
+    toggleBodyLock()
+  }
+
 
   return (
     <div className={styles["order-wrapper"]}>
@@ -37,6 +47,10 @@ const Order: FC<OrderProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart,
         {/* buttons */}
         {cart.length === 0 && (<EmptyCartBtn />)}
         {cart.length !== 0 && (<ConfirmationBtn doFormSubmit={doFormSubmit} />)}
+
+        <a onClick={handleModalLinkClick}>click to modal</a>
+
+        <PolicyModal isOpen={isPolicyModalOpen} setIsOpen={setIsPolicyModalOpen}/>
         
       </div>
     </div>

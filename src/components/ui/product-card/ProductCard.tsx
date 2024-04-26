@@ -14,7 +14,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   /*product have: id, title, subtitle, price, count, img, currency */
-  const [addToCart, {isLoading: isAddLoading, isError: isAddError}] = useAddToCartMutation()
+  const [addToCart, {isLoading: isAddToCartLoading, isError: isAddError}] = useAddToCartMutation()
   const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
   useEffect(() => {
     if (isAddError) {
@@ -25,7 +25,7 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
   const cardState = cart.find((item) => { return item.id === product.id})
 
 
-  async function handleAddProduct(product: IShopApiDataItem): Promise<void> {
+  async function addProduct(product: IShopApiDataItem): Promise<void> {
     if (isTooManyRequestsError) {
       alert('Too many requests to MockApi, await 20 seconds');
       return
@@ -54,7 +54,7 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
             </span>
           </p>
         </div>
-        {!cardState && <AddToCartBtn isAddLoading={isAddLoading} onClick={() => handleAddProduct(product)}/>}
+        {!cardState && <AddToCartBtn isAddToCartLoading={isAddToCartLoading} onClick={() => addProduct(product)}/>}
         {cardState && (
           <div className={styles["product-card__added-wrapper"]}>
             <ProductCounter cardState={cardState}/>

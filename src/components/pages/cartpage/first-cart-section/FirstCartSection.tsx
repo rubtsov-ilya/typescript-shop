@@ -3,9 +3,11 @@ import styles from "./FirstCartSection.module.sass";
 import Form from "./form/Form";
 import Order from "./order/Order";
 import { useGetCartQuery } from "../../../../redux/index";
+import useBodyLock from "../../../../hooks/useBodyLock";
 
 const FirstCartSection: FC = () => {
   const btnRef = useRef<HTMLButtonElement>(null)
+  const {isBodyLock, lockPaddingValue, toggleBodyLock} = useBodyLock()
   
   const { data: cart = [], isLoading: isLoadingCart, isError: isErrorCart} = useGetCartQuery()
 
@@ -24,7 +26,7 @@ const FirstCartSection: FC = () => {
   }
 
   return (
-    <section className={styles["first-section"]}>
+    <section style={ isBodyLock ? { paddingRight: `${lockPaddingValue}px` } : {}} className={styles["first-section"]}>
       <div className="container">
         <div className={styles["first-section__content"]}>
           <Form totalSumOrder={totalSumOrder} cart={cart} btnRef={btnRef} />
