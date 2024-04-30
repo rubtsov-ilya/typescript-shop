@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Homepage from "./../components/pages/homepage/Homepage.tsx";
 import Layout from "./../components/layout/Layout.tsx";
 import BodyLockProvider from "../providers/BodyLockProvider.tsx";
@@ -14,17 +14,15 @@ export default function App() {
     <BodyLockProvider>
       <DarkThemeProvider>
         <ServerErrorProvider>
-          <BrowserRouter>
-            <ScrollToTopProvider />
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Homepage />} />
-                <Route path="cart" element={<Cartpage />} />
-                <Route path="delivery" element={<Deliverypage />} />
-                <Route path="*" element={<Notfoundpage />} />
-              </Route>
-            </Routes>
-          </BrowserRouter>
+          <ScrollToTopProvider />
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Homepage />} />
+              <Route path="cart" element={<Cartpage />} />
+              <Route path="delivery" element={<Deliverypage />} />
+              <Route path="*" element={<Notfoundpage />} />
+            </Route>
+          </Routes>
         </ServerErrorProvider>
       </DarkThemeProvider>
     </BodyLockProvider>

@@ -1,3 +1,4 @@
+@import '../../../assets/css/_mixins'
 .location
   display: flex
   justify-content: center
@@ -16,6 +17,8 @@
     font-size: 14px
     font-weight: 400
     line-height: 130%
+    @include phone
+      display: none
   &__svg
     width: 22px
     height: 22px

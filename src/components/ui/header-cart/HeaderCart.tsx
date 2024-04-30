@@ -6,7 +6,7 @@ import { useGetCartQuery } from "../../../redux/index";
 
 const HeaderCart:FC = () => {
   const { data: cart = []} = useGetCartQuery()
-  const sumCart = cart.reduce((acc, curr) => acc + curr.count, 0);
+  const sumCart = cart.reduce((acc, current) => acc + current.count, 0);
   return (
     <Link to={`/cart`} className={styles["header-cart"]}>
       <img className={styles["header-cart__svg"]} src={headerCartSvg} alt="Cart" />

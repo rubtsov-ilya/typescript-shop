@@ -50,7 +50,7 @@ const FormSecondWrapper: FC<FormSecondWrapperProps> = ({ register, errors, setVa
         <CartDollar
           width="22"
           height="22"
-          className={styles["second-wrapper__point-icon"]}
+          className={styles["second-wrapper__dollar-icon"]}
         />
         <div>
           <h3 className={styles["second-wrapper__title"]}>Pagamento</h3>

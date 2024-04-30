@@ -13,3 +13,33 @@
   transition: border 0.2s ease
   &:focus
     border: 1px solid var(--ui-yellow-dark)
+
+/* base media */
+@mixin desktop-small
+  @media (max-width: 1180px)
+    @content
+
+@mixin tablet
+  @media (max-width: 905px)
+    @content
+
+@mixin phone
+  @media (max-width: 480px)
+    @content
+
+
+/* Because this Figma design doesn't have an adaptive design, I will create it myself, and for this, 
+  I will need individual mixins for the pages, but it`s a bad practice */
+
+/* homepage */
+@mixin homepage-media-breakpoint-1
+  @media (max-width: 1110px)
+    @content
+
+@mixin homepage-media-breakpoint-2
+  @media (max-width: 990px)
+    @content
+
+@mixin homepage-media-breakpoint-3
+  @media (max-width: 615px)
+    @content

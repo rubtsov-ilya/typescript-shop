@@ -13,7 +13,7 @@ const LeftWrapper: FC = () => {
       <h1 className={styles["left-wrapper__title"]}>Encontre o café perfeito para qualquer hora do dia</h1>
       <p className={styles["left-wrapper__subtitle"]}>Com o Coffee Delivery você recebe seu café onde estiver, a qualquer hora</p>
       <div className={styles["left-wrapper__grid-wrapper"]}>
-        <GridItemFirstSection svgIcon={gridIcon1} >Compra simples e segura</GridItemFirstSection>
+        <GridItemFirstSection svgIcon={gridIcon1}>Compra simples e segura</GridItemFirstSection>
         <GridItemFirstSection svgIcon={gridIcon2}>Embalagem mantém o café intacto</GridItemFirstSection>
         <GridItemFirstSection svgIcon={gridIcon3}>Entrega rápida e rastreada</GridItemFirstSection>
         <GridItemFirstSection svgIcon={gridIcon4}>O café chega fresquinho até você</GridItemFirstSection>

@@ -22,9 +22,7 @@ const OrderCard: FC<OrderCardProps> = ({ cartItem }) => {
             </div>
           </div>
         </div>
-        <div className={styles["order-card__price-wrapper"]}>
-          <p className={styles["order-card__price"]}>{cartItem.currency} {(parseFloat(cartItem.price.replace(",", ".")) * cartItem.count).toFixed(2).replace(/\./, ',')}</p>
-        </div>
+        <p className={styles["order-card__price"]}>{cartItem.currency} {(parseFloat(cartItem.price.replace(",", ".")) * cartItem.count).toFixed(2).replace(/\./, ',')}</p>
       </div>
       <hr className={styles["order-card__stroke"]}></hr>
     </>

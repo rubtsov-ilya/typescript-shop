@@ -1,9 +1,14 @@
+@import '../../../../../assets/css/_mixins'
 .custom-select
   width: 150px !important
   font-size: 14px !important
   height: 100% !important
   grid-column-end: 5 !important
   justify-self: flex-end !important
+  @include homepage-media-breakpoint-1
+    grid-column-end: 3 !important
+  @include phone
+    width: 120px !important
     
   &__control
     background: var(--bg-base) !important
