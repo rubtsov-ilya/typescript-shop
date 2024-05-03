@@ -16,11 +16,15 @@
 
 /* base media */
 @mixin desktop-small
-  @media (max-width: 1180px)
+  @media (max-width: 1200px)
     @content
 
 @mixin tablet
-  @media (max-width: 905px)
+  @media (max-width: 992px)
+    @content
+
+@mixin tablet-small
+  @media (max-width: 768px)
     @content
 
 @mixin phone
@@ -29,7 +33,7 @@
 
 
 /* Because this Figma design doesn't have an adaptive design, I will create it myself, and for this, 
-  I will need individual mixins for the pages, but it`s a bad practice */
+  I will use individual mixins for homepage, to make the design look good. But it`s a bad practice */
 
 /* homepage */
 @mixin homepage-media-breakpoint-1

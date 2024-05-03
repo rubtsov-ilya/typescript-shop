@@ -26,13 +26,13 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
   }, [isDeleteError])
   
   
-  async function clearCart(id: string): Promise<void> {
+/*   async function clearCart(id: string): Promise<void> {
     if (isTooManyRequestsError) {
       console.log('error from server to clearing cart')
       return
     }
     await deleteFromCart({id: id}).unwrap()
-  }
+  } */
 
   const {
     register,

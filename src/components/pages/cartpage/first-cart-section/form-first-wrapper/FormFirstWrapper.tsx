@@ -42,7 +42,6 @@ const FormFirstWrapper: FC<FormFirstWrapperProps> = ({ register, errors }) => {
           type="number"
           placeholder="Número de telefone"
         />
-        <div></div>
         <input
           {...register("rua", {
             required: true,

@@ -1,3 +1,4 @@
+@import '../../../assets/css/_mixins'
 .payment-btn
   border-radius: 6px
   padding: 15px
@@ -10,6 +11,12 @@
   cursor: pointer
   transition: all 0.2s ease
   border: 1px solid var(--button)
+  @include desktop-small
+    gap: 7px
+    padding: 15px 7px
+  @include tablet
+    gap: 12px
+    padding: 15px 15px
   &:hover
     border: 1px solid var(--button-hover)
     background-color: var(--button-hover)
@@ -24,6 +31,10 @@
     text-transform: uppercase
     color: var(--text)
     user-select: none
+    @include desktop-small
+      font-size: 11px
+    @include tablet
+      font-size: 12px
 .payment-btn.active
   border: 1px solid var(--button-border)
   background-color: var(--button-active)
