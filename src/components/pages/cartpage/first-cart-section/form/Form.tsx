@@ -2,11 +2,11 @@ import styles from './Form.module.sass'
 import FormFirstWrapper from '../form-first-wrapper/FormFirstWrapper'
 import FormSecondWrapper from '../form-second-wrapper/FormSecondWrapper'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useDeleteFromCartMutation } from '../../../../../redux/index'
+/* import { useDeleteFromCartMutation } from '../../../../../redux/index' */
+/* import useServerError from '../../../../../hooks/useServerError' */
 import { useNavigate } from 'react-router-dom'
-import { FC, RefObject, useEffect } from 'react'
+import { FC, RefObject } from 'react'
 import { IFormValues } from '../../../../../interfaces/FormValues.interface'
-import useServerError from '../../../../../hooks/useServerError'
 
 interface FormProps {
   cart: IShopApiCartItem[];
@@ -15,17 +15,17 @@ interface FormProps {
 }
 
 const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
-  const [deleteFromCart, { isError: isDeleteError }] = useDeleteFromCartMutation()
+/*   const [deleteFromCart, { isError: isDeleteError }] = useDeleteFromCartMutation() */
+/* const { setServerError } = useServerError() */
   const navigate = useNavigate();
-  const {isTooManyRequestsError, setServerError} = useServerError()
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (isDeleteError) {
       setServerError();
     }
   }, [isDeleteError])
   
-  
+   */
 /*   async function clearCart(id: string): Promise<void> {
     if (isTooManyRequestsError) {
       console.log('error from server to clearing cart')

@@ -1,6 +1,5 @@
 import styles from './FirstDeliverySection.module.sass'
 import OrderInfo from './order-info/OrderInfo'
-import DeliveryIllustration from '../../../../assets/images/delivery-Illustration.svg?react'
 import deliveryIllustration from '../../../../assets/images/delivery-Illustration.svg'
 import { IFormValues } from '../../../../interfaces/FormValues.interface'
 import { FC } from 'react'
