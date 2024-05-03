@@ -7,7 +7,7 @@ import useBodyLock from "../../../../hooks/useBodyLock";
 
 const FirstCartSection: FC = () => {
   const btnRef = useRef<HTMLButtonElement>(null)
-  const {isBodyLock, lockPaddingValue, toggleBodyLock} = useBodyLock()
+  const { isBodyLock, lockPaddingValue } = useBodyLock()
   
   const { data: cart = [], isLoading: isLoadingCart, isError: isErrorCart} = useGetCartQuery()
 
