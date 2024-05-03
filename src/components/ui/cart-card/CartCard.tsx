@@ -1,13 +1,13 @@
 import { FC } from 'react'
 import ProductCounter from '../product-counter/ProductCounter'
 import Remover from '../remover/Remover'
-import styles from './OrderCard.module.sass'
+import styles from './CartCard.module.sass'
 
-interface OrderCardProps {
+interface CartCardProps {
   cartItem: IShopApiCartItem
 }
 
-const OrderCard: FC<OrderCardProps> = ({ cartItem }) => {
+const OrderCard: FC<CartCardProps> = ({ cartItem }) => {
   /*cartItem have: id, title, subtitle, price, count, img, currency */
   return (
     <>

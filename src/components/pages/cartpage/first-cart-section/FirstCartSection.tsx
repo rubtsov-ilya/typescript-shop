@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import styles from "./FirstCartSection.module.sass";
 import Form from "./form/Form";
-import Order from "./order/Order";
+import Cart from "./cart/Cart";
 import { useGetCartQuery } from "../../../../redux/index";
 import useBodyLock from "../../../../hooks/useBodyLock";
 
@@ -30,7 +30,7 @@ const FirstCartSection: FC = () => {
       <div className="container">
         <div className={styles["first-section__content"]}>
           <Form totalSumOrder={totalSumOrder} cart={cart} btnRef={btnRef} />
-          <Order totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} cart={cart} isLoadingCart={isLoadingCart} isErrorCart={isErrorCart} doFormSubmit={doFormSubmit} />
+          <Cart totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} cart={cart} isLoadingCart={isLoadingCart} isErrorCart={isErrorCart} doFormSubmit={doFormSubmit} />
         </div>
       </div>
     </section>
