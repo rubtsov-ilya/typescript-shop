@@ -1,5 +1,6 @@
 {
-  "build": {
-    "public": "public/assets"
-  }
+  "public": "public/assets",
+  "assets": [
+    "src/assets/images/coffee/**"
+  ]
 }
