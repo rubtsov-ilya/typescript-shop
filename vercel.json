@@ -1,7 +1,7 @@
 {
   "build": {
-    "assets": [
-      "src/assets/images/coffee/*"
+    "include": [
+      "src/assets/images/coffee/**"
     ]
   }
 }
