@@ -1,7 +1,3 @@
 {
-  "build": {
-    "include": [
-      "src/assets/images/coffee/**"
-    ]
-  }
+  "public": true
 }
