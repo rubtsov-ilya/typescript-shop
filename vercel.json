@@ -1,6 +1,3 @@
 {
-  "public": "public/assets",
-  "assets": [
-    "src/assets/images/coffee/**"
-  ]
+  "public": "public/assets"
 }
