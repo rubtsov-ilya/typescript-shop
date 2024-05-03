@@ -93,7 +93,10 @@
     pointer-events: none
     @include tablet-small
       display: none
+      
   &__phone-error
     grid-column: 1 / 4
     font-family: var(--font-family)
     color: red
+    @include tablet-small
+      grid-column: 1 / 3
