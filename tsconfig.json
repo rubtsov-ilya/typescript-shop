@@ -23,6 +23,6 @@
     /* URL */
     "baseUrl": "src"
   },
-  "include": ["src", "postcss.config.js"],
+  "include": ["src", "postcss.config.сjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
