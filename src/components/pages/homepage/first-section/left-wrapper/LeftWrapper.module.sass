@@ -14,7 +14,7 @@
     @include tablet
       font-size: 48px
       max-width: 588px
-    @include homepage-media-breakpoint-3
+    @include tablet-small
       font-size: clamp(36px, -0.417rem + 8.89vw, 48px)
     @include phone
       font-size: clamp(26px, -0.25rem + 8.33vw, 36px)
@@ -40,14 +40,11 @@
     @include homepage-media-breakpoint-1
       margin-top: 20px
       gap: 20px clamp(20px, -9.063rem + 16.67vw, 40px)
-    @include homepage-media-breakpoint-2
-      grid-template-columns: 200px 200px
     @include tablet
-      grid-template-columns: 231px 294px
       gap: 20px 40px
       margin-top: 66px
-    @include homepage-media-breakpoint-3
-      grid-template-columns: 1fr 1fr
+    @include tablet-small
+      grid-template-columns: minmax(0, 231px) minmax(0, 294px)
       margin-top: 38px
     @include phone
       grid-template-columns: 1fr
