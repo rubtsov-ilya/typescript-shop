@@ -18,7 +18,12 @@ const BodyLockProvider: FC<BodyLockProviderProps> = ({ children }) => {
   const [lockPaddingValue, setLockPaddingValue] = useState< number >(0)
 
   useEffect(() => {
-    setLockPaddingValue(window.innerWidth - (document.querySelector('#root') as HTMLDivElement).offsetWidth);
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    if (isMobile) {
+      return
+    } else if (!isMobile) {
+      setLockPaddingValue(window.innerWidth - (document.querySelector('#root') as HTMLDivElement).offsetWidth);
+    }
   }, [])
   
   const toggleBodyLock = () => { 
@@ -30,9 +35,9 @@ const BodyLockProvider: FC<BodyLockProviderProps> = ({ children }) => {
    
    const value: IValue = {isBodyLock, lockPaddingValue, toggleBodyLock}
 
-   //стиль для section 
+   // style for section 
    // style={ isBodyLock ? { paddingRight: `${lockPaddingValue}px` } : {}}
-   // получение в компонентах
+   // get in components
    // const {isBodyLock, lockPaddingValue, toggleBodyLock} = useBodyLock()
   return (
     <bodyLockContext.Provider value={value}>
