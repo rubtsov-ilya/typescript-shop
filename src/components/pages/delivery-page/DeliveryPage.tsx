@@ -9,7 +9,7 @@ interface ILocationState {
     totalSumOrder: number;
 }
 
-const Deliverypage: FC = () => {
+const DeliveryPage: FC = () => {
   const location = useLocation();
   const locationState: ILocationState = location.state;
 
@@ -27,4 +27,4 @@ const Deliverypage: FC = () => {
   )
 }
 
-export default Deliverypage
+export default DeliveryPage

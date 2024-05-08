@@ -1,7 +1,7 @@
 import { FC } from "react";
 import FirstCartSection from "./first-cart-section/FirstCartSection.tsx";
 
-const Cartpage: FC = () => {
+const CartPage: FC = () => {
   return (
     <main>
       <FirstCartSection />
@@ -9,4 +9,4 @@ const Cartpage: FC = () => {
   )
 }
 
-export default Cartpage
+export default CartPage

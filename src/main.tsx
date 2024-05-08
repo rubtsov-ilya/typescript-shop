@@ -5,6 +5,7 @@ import "./app/index.sass";
 import { store } from "./redux/index.ts";
 import { Provider } from "react-redux";
 
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
   <BrowserRouter>
     <Provider store={store}>

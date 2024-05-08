@@ -2,7 +2,7 @@ import { FC } from "react";
 import FirstSection from "./first-section/FirstSection.tsx";
 import ProductsSection from './products-section/ProductsSection.tsx';
 
-const Homepage: FC = () => {
+const HomePage: FC = () => {
   return (
     <main>
       <FirstSection />
@@ -11,4 +11,4 @@ const Homepage: FC = () => {
   )
 }
 
-export default Homepage
+export default HomePage

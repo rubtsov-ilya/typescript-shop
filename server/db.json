@@ -109,5 +109,33 @@
       "img": "../../../src/assets/images/coffee/Image12.png"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "4",
+      "title": "Expresso Gelado",
+      "subtitle": "Bebida preparada com café expresso e cubos de gelo",
+      "price": "7,90",
+      "currency": "R$",
+      "count": 6,
+      "img": "../../../src/assets/images/coffee/Image4.png"
+    },
+    {
+      "id": "5",
+      "title": "Café com Leite",
+      "subtitle": "Meio a meio de expresso tradicional com leite vaporizado",
+      "price": "8,90",
+      "currency": "R$",
+      "count": 1,
+      "img": "../../../src/assets/images/coffee/Image5.png"
+    },
+    {
+      "id": "7",
+      "title": "Capuccino",
+      "subtitle": "Bebida com canela feita de doses iguais de café, leite e espuma",
+      "price": "8,90",
+      "currency": "R$",
+      "count": 1,
+      "img": "../../../src/assets/images/coffee/Image7.png"
+    }
+  ]
 }
