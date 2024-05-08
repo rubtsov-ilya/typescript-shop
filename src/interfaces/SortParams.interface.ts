@@ -1,4 +1,4 @@
 export interface SortParams {
-  sortBy: 'title' | 'price';
+  sort: 'title' | 'price';
   order: 'asc' | 'desc';
 }

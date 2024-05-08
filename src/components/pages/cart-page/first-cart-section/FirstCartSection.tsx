@@ -14,7 +14,7 @@ const FirstCartSection: FC = () => {
   const deliveryPrice = 3.5
 
   const sumOrder = Number(cart.reduce((acc, item): number => {
-    const price = parseFloat(item.price.replace(",", "."))
+    const price = parseFloat(item.price?.replace(",", "."))
     const count = item.count
     return acc + (price * count)
   }, 0).toFixed(2))

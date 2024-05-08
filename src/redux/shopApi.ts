@@ -2,18 +2,18 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const shopApi = createApi({
   reducerPath: 'shopApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://6623b27c3e17a3ac846fe8ef.mockapi.io/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://db-shop.vercel.app/api/' }),
   tagTypes: ['Products', 'Cart'],
   endpoints: (build) => ({
     /* QUERY */
     /* Products */
-    getProducts: build.query<IShopApiDataItem[], {sortBy: 'title' | 'price', order: 'asc' | 'desc', title: string}>({
-      query: ({sortBy, order, title = ''}) => ({
+    getProducts: build.query<IShopApiDataItem[], {sort: 'title' | 'price', order: 'asc' | 'desc', title: string}>({
+      query: ({sort, order, title = ''}) => ({
         url: `products`,
         params: {
-          sortBy: sortBy,
-          order: order,
-          title: title,
+          _sort: sort,
+          _order: order,
+          title_like: title,
         }
       }),
       providesTags: (result): any =>
@@ -51,9 +51,9 @@ export const shopApi = createApi({
     changeCount: build.mutation<IShopApiDataItem, { id: string, count: number}>({
       query: ({id, count}) => ({
         url: `cart/${id}`,
-        method: 'PUT',
+        method: 'PATCH',
         /* тут stringify, т.к. число передаём обычное, а выше сразу json полученный с сервака */
-        body: JSON.stringify({count: count}),
+        body: {count: count},
         headers: {
           'Content-Type': 'application/json',
         },

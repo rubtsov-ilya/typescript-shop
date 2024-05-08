@@ -19,7 +19,7 @@ const ProductCounter: FC<ProductCounterProps> = ({ smallModifier, cardState }) =
   const [changeCount, { isLoading: isChangeLoading, isError: isChangeError }] = useChangeCountMutation()
   const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
 
-  const changedId = cardState.mockid
+  const changedId = cardState.id
   /* spam timer */
   useEffect(() => {
     if (isChangeError || isDeleteError) {
