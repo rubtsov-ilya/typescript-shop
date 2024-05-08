@@ -29,7 +29,7 @@ const Remover: FC<RemoverProps> = ({ cardState }) => {
   }
 
   return (
-    <button disabled={isDeleteLoading} onClick={() => handleClick(cardState.mockid)} className={styles["remover"]}>
+    <button disabled={isDeleteLoading} onClick={() => handleClick(cardState.id)} className={styles["remover"]}>
       <RemoverSvg className={styles["remover__svg"]} width='16' height='17' />
       <p className={styles["remover__text"]}>Remover</p>
     </button>
