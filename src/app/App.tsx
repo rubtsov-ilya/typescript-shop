@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import Homepage from "./../components/pages/homepage/Homepage.tsx";
+import HomePage from "../components/pages/home-page/HomePage.tsx";
 import Layout from "./../components/layout/Layout.tsx";
 import BodyLockProvider from "../providers/BodyLockProvider.tsx";
-import Notfoundpage from "../components/pages/notfoundpage/Notfoundpage.tsx";
-import Cartpage from "../components/pages/cartpage/Cartpage.tsx";
+import NotfoundPage from "../components/pages/not-found-page/NotfoundPage.tsx";
+import CartPage from "../components/pages/cart-page/Cartpage.tsx";
 import ScrollToTopProvider from "../providers/ScrollToTopProvider.tsx";
-import Deliverypage from "../components/pages/deliverypage/Deliverypage.tsx";
+import DeliveryPage from "../components/pages/delivery-page/DeliveryPage.tsx";
 import DarkThemeProvider from "../providers/DarkThemeProvider.tsx";
 import ServerErrorProvider from "../providers/ServerErrorProvider.tsx";
 
@@ -17,10 +17,10 @@ export default function App() {
           <ScrollToTopProvider />
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<Homepage />} />
-              <Route path="cart" element={<Cartpage />} />
-              <Route path="delivery" element={<Deliverypage />} />
-              <Route path="*" element={<Notfoundpage />} />
+              <Route index element={<HomePage />} />
+              <Route path="cart" element={<CartPage />} />
+              <Route path="delivery" element={<DeliveryPage />} />
+              <Route path="*" element={<NotfoundPage />} />
             </Route>
           </Routes>
         </ServerErrorProvider>

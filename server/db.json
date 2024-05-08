@@ -7,7 +7,7 @@
       "price": "9,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image1.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image1.png"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "price": "8,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image2.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image2.png"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "price": "9,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image3.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image3.png"
     },
     {
       "id": "4",
@@ -34,7 +34,7 @@
       "price": "7,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image4.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image4.png"
     },
     {
       "id": "5",
@@ -43,7 +43,7 @@
       "price": "8,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image5.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image5.png"
     },
     {
       "id": "6",
@@ -52,7 +52,7 @@
       "price": "6,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image6.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image6.png"
     },
     {
       "id": "7",
@@ -61,7 +61,7 @@
       "price": "8,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image7.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image7.png"
     },
     {
       "id": "8",
@@ -70,7 +70,7 @@
       "price": "9,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image8.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image8.png"
     },
     {
       "id": "9",
@@ -79,7 +79,7 @@
       "price": "9,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image9.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image9.png"
     },
     {
       "id": "10",
@@ -88,7 +88,7 @@
       "price": "7,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image10.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image10.png"
     },
     {
       "id": "11",
@@ -97,7 +97,7 @@
       "price": "7,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image11.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image11.png"
     },
     {
       "id": "12",
@@ -106,8 +106,18 @@
       "price": "9,90",
       "currency": "R$",
       "count": 1,
-      "img": "../../../src/assets/images/coffee/Image12.png"
+      "img": "https://typescript-shop-vert.vercel.app/Image12.png"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "7",
+      "title": "Capuccino",
+      "subtitle": "Bebida com canela feita de doses iguais de café, leite e espuma",
+      "price": "8,90",
+      "currency": "R$",
+      "count": 11,
+      "img": "https://typescript-shop-vert.vercel.app/Image7.png"
+    }
+  ]
 }

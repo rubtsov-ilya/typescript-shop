@@ -1,7 +1,7 @@
 import { FC } from "react";
-import styles from "./Notfoundpage.module.sass";
+import styles from "./NotfoundPage.module.sass";
 
-const Notfoundpage: FC = () => {
+const NotfoundPage: FC = () => {
   return (
     <main className={styles["notfound-section"]}>
       <div className="container">
@@ -15,4 +15,4 @@ const Notfoundpage: FC = () => {
   );
 }
 
-export default Notfoundpage
+export default NotfoundPage
