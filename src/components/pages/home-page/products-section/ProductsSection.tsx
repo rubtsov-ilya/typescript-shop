@@ -12,13 +12,13 @@ type ErrorStatusType = number | "FETCH_ERROR" | "PARSING_ERROR" | "TIMEOUT_ERROR
 const productsSection: FC = () => {
   /* select state */
   const [sortParams, setSortParams] = useState<SortParams>({
-    sort: 'title',
+    sortBy: 'title',
     order: 'asc'
   });
   /* search state*/
   const [searchParameter, setSearchParameter] = useState<string>('');
   /* data query */
-  const { data: products = [], isLoading, error, isFetching } = useGetProductsQuery({ sort: sortParams.sort, order: sortParams.order, title: searchParameter });
+  const { data: products = [], isLoading, error, isFetching } = useGetProductsQuery({ sortBy: sortParams.sortBy, order: sortParams.order, title: searchParameter });
   const { data: cart = [] } = useGetCartQuery();
 
   const errorStatus: ErrorStatusType = error && 'status' in error ? error.status : undefined;

@@ -9,6 +9,7 @@ interface IShopApiDataItem {
 }
 
 interface IShopApiCartItem extends IShopApiDataItem{
+  mockid: string;
 }
 
 interface IShopApiDataQuery {

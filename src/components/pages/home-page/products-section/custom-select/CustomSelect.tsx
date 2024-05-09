@@ -15,22 +15,22 @@ const CustomSelect: FC<CustomSelectProps> = ({ setSortParams }) => {
     if (selectValue) {
       if (selectValue.value === 'title') {
         setSortParams({
-          sort: 'title',
+          sortBy: 'title',
           order: 'asc'
         })
       } else if (selectValue.value === 'title-reverce') {
         setSortParams({
-          sort: 'title',
+          sortBy: 'title',
           order: 'desc'
         })
       } else if (selectValue.value === 'price') {
         setSortParams({
-          sort: 'price',
+          sortBy: 'price',
           order: 'asc'
         })
       } else if (selectValue.value === 'price-reverce') {
         setSortParams({
-          sort: 'price',
+          sortBy: 'price',
           order: 'desc'
         })
       }
