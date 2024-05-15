@@ -1,6 +1,6 @@
 import { FC } from "react";
 import FirstSection from "./first-section/FirstSection.tsx";
-import ProductsSection from './products-section/ProductsSection.tsx';
+import ProductsSection from "./products-section/ProductsSection.tsx";
 
 const HomePage: FC = () => {
   return (
@@ -8,7 +8,7 @@ const HomePage: FC = () => {
       <FirstSection />
       <ProductsSection />
     </main>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

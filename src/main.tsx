@@ -4,7 +4,7 @@ import App from "./app/App.tsx";
 import "./app/index.sass";
 import { store } from "./redux/index.ts";
 import { Provider } from "react-redux";
-
+import "./firebase.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLDivElement).render(
   <BrowserRouter>

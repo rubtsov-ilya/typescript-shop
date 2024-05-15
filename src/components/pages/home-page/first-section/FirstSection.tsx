@@ -5,11 +5,11 @@ import { FC } from "react";
 
 const FirstSection: FC = () => {
   return (
-    <section className={styles["fisrt-section"]}>
+    <section className={styles["first-section"]}>
       <div className="container">
-        <div className={styles["fisrt-section__content"]}>
+        <div className={styles["first-section__content"]}>
           <LeftWrapper />
-          <img className={styles["fisrt-section__cup-img"]} src={cupImg} alt="Image" />
+          <img className={styles["first-section__cup-img"]} src={cupImg} alt="Image" />
         </div>
       </div>
     </section>
