@@ -4,10 +4,8 @@ import VisibilitySvg from "../../../assets/images/auth-icons/visibility_24dp_FIL
 import VisibilityOffSvg from "../../../assets/images/auth-icons/visibility_off_24dp_FILL0_wght400_GRAD0_opsz24.svg?react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IAuthValues } from "../../../interfaces/AuthValues.interface";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "../../../redux/slices/UserSlice";
-import { useDispatch } from 'react-redux'
 
 interface AuthFormProps {
   btnText: string;
@@ -24,8 +22,8 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
   const [passwordValue, setPasswordValue] = useState<string>('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState<string>('');
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
-  const navigate = useNavigate();
-  const dispatch = useDispatch()
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch()
 
   const {
     register,
@@ -52,20 +50,21 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
     const auth = getAuth();
     if (isRegister) {
       /* start firebase register */
-      createUserWithEmailAndPassword(auth, mailValue, passwordValue)
+      createUserWithEmailAndPassword(auth, data.email, data.password)
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          console.log(user)
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // ..
+          console.log(errorCode, errorMessage)
         });
       /* end firebase register */
     } else if (isLogin) {
       /* start firebase login */
-      signInWithEmailAndPassword(auth, mailValue, passwordValue)
+      signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -81,7 +80,7 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
       });
       /* end firebase login */
     } else if (isResetPassword) {
-      sendPasswordResetEmail(auth, mailValue)
+      sendPasswordResetEmail(auth, data.email)
       .then(() => {
       // Password reset email sent!
       if (setIsMessageSended) {
@@ -92,12 +91,12 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode) {
-          setError('login', { type: 'manual', message: `this account doesn't exist` });
+          setError('email', { type: 'manual', message: `this account doesn't exist` });
+          console.log(errorMessage)
         }
       });
     }
-    /* formReset();
-    alert(`form submit`); */
+    formReset();
     /* navigate('/', { state: data }); */
    }
 
@@ -105,13 +104,13 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
     <div className={styles["form-wrapper"]}>
       <h1 className={styles["form-wrapper__title"]}>{titleText}</h1>
       <form onSubmit={handleSubmit(handleFormSubmit)} className={styles["form"]}>
-        <label className={errors.login ? `${styles["form__label"]} ${styles["form__label-error"]}` : styles["form__label"]} htmlFor="login">
-          {errors.login ? errors.login.message : 'Enter your email'}
+        <label className={errors.email ? `${styles["form__label"]} ${styles["form__label-error"]}` : styles["form__label"]} htmlFor="login">
+          {errors.email ? errors.email.message : 'Enter your email'}
         </label>
         <input
           style={isResetPassword ? {marginBottom: 0} : {}}
           value={mailValue}
-          {...register("login", {
+          {...register("email", {
             required: {
               value: true,
               message: "This field is required"
@@ -124,7 +123,7 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
           onChange={(e: ChangeEvent<HTMLInputElement>) =>
             setMailValue(e.target.value)
           }
-          className={errors.login ? `${styles["form__input-bg"]} ${styles["form__input-error"]}` : `${styles["form__input-bg"]}`}
+          className={errors.email ? `${styles["form__input-bg"]} ${styles["form__input-error"]}` : `${styles["form__input-bg"]}`}
           type="text"
           placeholder="example@email.com"
         />
