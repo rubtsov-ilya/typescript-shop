@@ -12,7 +12,7 @@ import RegisterPage from "../components/pages/register-page/RegisterPage.tsx";
 import ResetPasswordPage from "../components/pages/reset-password-page/ResetPasswordPage.tsx";
 import AuthProvider from "../providers/AuthProvider.tsx";
 import AccountPage from "../components/pages/account-page/AccountPage.tsx";
-import CartPage from "../components/pages/cart-page/CartPage.tsx";
+import CartPage from "../components/pages/cart-page/CartPage";
 
 
 export default function App() {
