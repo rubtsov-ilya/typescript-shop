@@ -12,7 +12,8 @@ import RegisterPage from "../components/pages/register-page/RegisterPage.tsx";
 import ResetPasswordPage from "../components/pages/reset-password-page/ResetPasswordPage.tsx";
 import AuthProvider from "../providers/AuthProvider.tsx";
 import AccountPage from "../components/pages/account-page/AccountPage.tsx";
-import CartPage from "../components/pages/cartpage/CartPage.tsx";
+import ProductsCartPage from "../components/pages/products-cart-page/CartPage.tsx";
+
 
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />
-              <Route path="cart" element={<CartPage />} />
+              <Route path="cart" element={<ProductsCartPage />} />
               <Route path="delivery" element={<DeliveryPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
