@@ -7,8 +7,7 @@ import useBodyLock from "../../../../hooks/useBodyLock";
 import useAuth from "../../../../hooks/useAuth";
 
 const FirstCartSection: FC = () => {
-  const {email, isAuth, uid, uMockid} = useAuth()
-  console.log(email, isAuth, uid, uMockid)
+  const { uMockid } = useAuth()
   const btnRef = useRef<HTMLButtonElement>(null)
   const { isBodyLock, lockPaddingValue } = useBodyLock()
   
