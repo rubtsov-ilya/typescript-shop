@@ -1,13 +1,13 @@
-import { FC } from "react";
+/* import { FC } from "react"; */
 /* import FirstCartSection from "./first-cart-section/FirstCartSection.tsx"; */
-/* import useAuth from "../../../hooks/useAuth.ts";
-import { Navigate } from "react-router-dom"; */
+import useAuth from "../../../hooks/useAuth.ts";
+import { Navigate } from "react-router-dom";
 
-const CartPage: FC = () => {
-  /* const { isAuth } = useAuth() */
-  /* if (!isAuth) {
+const CartPage = () => {
+  const { isAuth } = useAuth()
+  if (!isAuth) {
     return <Navigate to="/login" replace />;
-  } */
+  }
   return (
     <main>
       {/* <FirstCartSection /> */}
