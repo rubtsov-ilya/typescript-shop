@@ -2,37 +2,33 @@ import styles from './Form.module.sass'
 import FormFirstWrapper from '../form-first-wrapper/FormFirstWrapper'
 import FormSecondWrapper from '../form-second-wrapper/FormSecondWrapper'
 import { useForm, SubmitHandler } from 'react-hook-form'
-/* import { useDeleteFromCartMutation } from '../../../../../redux/index' */
-/* import useServerError from '../../../../../hooks/useServerError' */
 import { useNavigate } from 'react-router-dom'
-import { FC, RefObject } from 'react'
+import { FC, RefObject, useEffect } from 'react'
 import { IFormValues } from '../../../../../interfaces/FormValues.interface'
+import useServerError from '../../../../../hooks/useServerError'
+import useAuth from '../../../../../hooks/useAuth'
+import { usePutCartMutation, usePutOrdersMutation } from '../../../../../redux'
+import { IValueServerError } from '../../../../../interfaces/ServerErrorValue.interface'
 
 interface FormProps {
-  cart: IShopApiCartItem[];
+  cart: IShopApiDataItem[];
   btnRef: RefObject<HTMLButtonElement>;
   totalSumOrder: number;
+  orders: IOrder[]
 }
 
-const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
-/*   const [deleteFromCart, { isError: isDeleteError }] = useDeleteFromCartMutation() */
-/* const { setServerError } = useServerError() */
+const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder, orders }) => {
+const {uMockid} = useAuth()
+const [putCart, {isLoading: isPutCartLoading, isError: isPutCartError}] = usePutCartMutation()
+const [putOrders, {isError: isPutOrdersError}] = usePutOrdersMutation()
+const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
   const navigate = useNavigate();
 
-/*   useEffect(() => {
-    if (isDeleteError) {
+  useEffect(() => {
+    if (isPutCartError || isPutOrdersError) {
       setServerError();
     }
-  }, [isDeleteError])
-  
-   */
-/*   async function clearCart(id: string): Promise<void> {
-    if (isTooManyRequestsError) {
-      console.log('error from server to clearing cart')
-      return
-    }
-    await deleteFromCart({id: id}).unwrap()
-  } */
+  }, [isPutCartError, isPutOrdersError])
 
   const {
     register,
@@ -46,12 +42,25 @@ const Form: FC<FormProps> = ({ cart, btnRef, totalSumOrder }) => {
     mode: "onSubmit"
   })
 
-  const handleFormSubmit: SubmitHandler<IFormValues> = (data) => {  
-    const fullOrderData = {formInfo: data , order: cart, totalSumOrder}
-    /* this should be sending fullOrderData to a real api and clear the cart */
-    /* cart.map((cartItem) => clearCart(cartItem.mockid)) */
+  const handleFormSubmit: SubmitHandler<IFormValues> = async (data): Promise<void> => {  
+    const fullOrderData = {formInfo: data, order: cart}
+
+    if (uMockid && !isPutCartLoading) {
+      if (isTooManyRequestsError) {
+        console.log('error from server to clearing cart')
+        return
+      }
+      const NewOrder: IOrder = {
+        fullСreationDate: new Date().toLocaleString(),
+        order: cart,
+        orderPrice: totalSumOrder
+      }
+      const newOrdersArray = [...orders, NewOrder]
+      await putOrders({newOrdersArray: newOrdersArray, uMockid: uMockid}).unwrap()
+      const newCartArray: [] = [];
+      await putCart({newCartArray: newCartArray, uMockid: uMockid}).unwrap()
+    }
     reset()
-    alert(`the cart should be cleared, but mockapi doesn't support it`)
     navigate('/delivery', { state: fullOrderData });
    }
 

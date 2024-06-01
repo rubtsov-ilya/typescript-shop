@@ -24,51 +24,67 @@ export const shopApi = createApi({
             ]
           : [{ type: 'Products', id: 'LIST' }],
     }),
-    /* Cart */
-    getCart: build.query<IShopApiCartItem[], void>({
-      query: () => `cart`,
+    /* get users to get the mockid of the user */
+    getUsers: build.query<IShopApiUser[], void>({
+      query: () => `users`,
       providesTags: (result): any =>
         result
           ? [
               { type: 'Cart', id: 'LIST' },
-              ...result.map(({ id }) => ({ type: 'Cart', id })),
+              ...result.map(({ id }: any) => ({ type: 'Cart', id })),
+            ]
+          : [{ type: 'Cart', id: 'LIST' }],
+    }),
+    /* get userState */
+    getUserState: build.query<IShopApiUser, {uMockid: string}>({
+      query: ({uMockid}) => ({
+        url: `users/${uMockid}`,
+      }),
+      providesTags: (result): any =>
+        result
+          ? [
+              { type: 'Cart', id: 'LIST' },
+              { type: 'Cart', id: result.mockid },
             ]
           : [{ type: 'Cart', id: 'LIST' }],
     }),
 
     /* MUTATIONS */
-    addToCart: build.mutation<IShopApiDataItem, { product: IShopApiDataItem }>({
-      query: ({product}) => ({
-        url: `cart`,
+    putCart: build.mutation<IShopApiDataItem, { newCartArray: IShopApiDataItem[], uMockid: string }>({
+      query: ({newCartArray, uMockid}) => ({
+        url: `users/${uMockid}`,
+        method: 'PUT',
+        body: {
+          cart: newCartArray,
+        },
+      }),
+      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+    }),
+
+    putOrders: build.mutation<IShopApiDataItem, { newOrdersArray: IOrder[], uMockid: string }>({
+      query: ({newOrdersArray, uMockid}) => ({
+        url: `users/${uMockid}`,
+        method: 'PUT',
+        body: {
+          orders: newOrdersArray,
+        },
+      }),
+      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
+    }),
+
+    addUserToDataBase: build.mutation<IRegisterUserState, { uid: string }>({
+      query: ({uid}) => ({
+        url: `users`,
         method: 'POST',
         body: {
-          ...product,
+          uid: uid,
+          cart: [],
+          orders: [],
         },
-      }),
-      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
-    }),
-
-    changeCount: build.mutation<IShopApiDataItem, { id: string, count: number}>({
-      query: ({id, count}) => ({
-        url: `cart/${id}`,
-        method: 'PUT',
-        /* тут stringify, т.к. число передаём обычное, а выше сразу json полученный с сервака */
-        body: JSON.stringify({count: count}),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }),
-      invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
-    }),
-
-    deleteFromCart: build.mutation<void, { id: string }>({
-      query: ({id}) => ({
-        url: `cart/${id}`,
-        method: 'DELETE',
       }),
       invalidatesTags: [{ type: 'Cart', id: 'LIST' }],
     }),
   }),
 });
 
-export const { useGetProductsQuery, useGetCartQuery, useAddToCartMutation, useDeleteFromCartMutation, useChangeCountMutation } = shopApi;
+export const { useGetProductsQuery, useGetUsersQuery, useGetUserStateQuery, usePutCartMutation, useAddUserToDataBaseMutation, usePutOrdersMutation } = shopApi;

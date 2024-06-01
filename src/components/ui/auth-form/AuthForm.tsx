@@ -4,8 +4,9 @@ import VisibilitySvg from "../../../assets/images/auth-icons/visibility_24dp_FIL
 import VisibilityOffSvg from "../../../assets/images/auth-icons/visibility_off_24dp_FILL0_wght400_GRAD0_opsz24.svg?react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IAuthValues } from "../../../interfaces/AuthValues.interface";
-import { Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword, getAuth, sendPasswordResetEmail, signInWithEmailAndPassword, User } from "firebase/auth";
+import { useAddUserToDataBaseMutation } from "../../../redux";
 
 interface AuthFormProps {
   btnText: string;
@@ -17,13 +18,13 @@ interface AuthFormProps {
 }
 
 const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, isResetPassword, setIsMessageSended}) => {
+  const [addUserToDataBase] = useAddUserToDataBaseMutation()
   const [isPasswordHidden, setIsPasswordHidden] = useState(true);
   const [mailValue, setMailValue] = useState<string>('');
   const [passwordValue, setPasswordValue] = useState<string>('');
   const [confirmPasswordValue, setConfirmPasswordValue] = useState<string>('');
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const {
     register,
@@ -46,15 +47,21 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
     setConfirmPasswordValue('')
    }
 
+  async function addUserDuringRegister(user: User) {
+    await addUserToDataBase({uid: user.uid})
+  }
+
   const handleFormSubmit: SubmitHandler<IAuthValues> = (data) => {
     const auth = getAuth();
     if (isRegister) {
       /* start firebase register */
       createUserWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
+        .then(({user}) => {
+          if (user) {
+            addUserDuringRegister(user);
+            navigate( '/' )
+          }
           // Signed up 
-          const user = userCredential.user;
-          console.log(user)
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -65,10 +72,11 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
     } else if (isLogin) {
       /* start firebase login */
       signInWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
+      .then(({ user }) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user)
+        if (user) {
+          navigate( '/' )
+        }
       })
       .catch((error) => {
         const errorCode = error.code;

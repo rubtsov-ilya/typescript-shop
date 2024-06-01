@@ -1,15 +1,20 @@
 import styles from "./ProductsSection.module.sass";
 import ProductCard from "../../../ui/product-card/ProductCard";
-import { useGetCartQuery, useGetProductsQuery } from "../../../../redux/index";
+import { useGetProductsQuery, useGetUserStateQuery } from "../../../../redux/index";
 import CustomSelect from "./custom-select/CustomSelect";
 import { FC, useState } from "react";
 import SearchFilter from "./search-filter/SearchFilter";
 import { SortParams } from "../../../../interfaces/SortParams.interface";
+import useAuth from "../../../../hooks/useAuth";
+
 
 
 type ErrorStatusType = number | "FETCH_ERROR" | "PARSING_ERROR" | "TIMEOUT_ERROR" | "CUSTOM_ERROR" | undefined
 
 const productsSection: FC = () => {
+  /* Auth test*/
+  const {email, isAuth, uid, uMockid} = useAuth()
+  console.log(email, isAuth, uid, uMockid)
   /* select state */
   const [sortParams, setSortParams] = useState<SortParams>({
     sortBy: 'title',
@@ -19,7 +24,7 @@ const productsSection: FC = () => {
   const [searchParameter, setSearchParameter] = useState<string>('');
   /* data query */
   const { data: products = [], isLoading, error, isFetching } = useGetProductsQuery({ sortBy: sortParams.sortBy, order: sortParams.order, title: searchParameter });
-  const { data: cart = [] } = useGetCartQuery();
+  const { data: userData = null, isLoading: isUserDateLoading } = useGetUserStateQuery({ uMockid: uMockid! }, { skip: uMockid === null })
 
   const errorStatus: ErrorStatusType = error && 'status' in error ? error.status : undefined;
 
@@ -53,7 +58,7 @@ const productsSection: FC = () => {
             {/* cards */}
             {!errorStatus && !isFetching && products.map((product) => {
               return (
-                <ProductCard key={product.id} product={product} cart={cart} />
+                <ProductCard isUserDateLoading={isUserDateLoading} uMockid={uMockid} key={product.id} product={product} cart={userData?.cart} />
               );
             })}
           </div>

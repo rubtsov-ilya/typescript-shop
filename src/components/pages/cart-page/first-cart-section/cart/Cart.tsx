@@ -8,7 +8,7 @@ import PolicyModal from '../../../../ui/policy-modal/PolicyModal';
 import useBodyLock from '../../../../../hooks/useBodyLock'
 
 interface CartProps {
-  cart: IShopApiCartItem[];
+  cart: IShopApiDataItem[];
   doFormSubmit: () => void
   isErrorCart: boolean
   isLoadingCart: boolean
@@ -17,7 +17,7 @@ interface CartProps {
   totalSumOrder: number;
 }
 
-const Order: FC<CartProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, deliveryPrice, sumOrder, totalSumOrder }) => {
+const Cart: FC<CartProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, deliveryPrice, sumOrder, totalSumOrder }) => {
 
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false)
   const { toggleBodyLock } = useBodyLock()
@@ -38,7 +38,7 @@ const Order: FC<CartProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, 
         
         {/* cart items */}
         {cart.map((cartItem) => {
-            return (<CartCard key={cartItem.id} cartItem={cartItem} />)
+            return (<CartCard cart={cart} key={cartItem.id} cartItem={cartItem} />)
         })}
 
         {/* delivery and order price */}
@@ -57,4 +57,4 @@ const Order: FC<CartProps> = ({ cart, doFormSubmit, isErrorCart, isLoadingCart, 
   )
 }
 
-export default Order
+export default Cart

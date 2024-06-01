@@ -1,0 +1,49 @@
+@import '../../../../assets/css/_mixins.sass'
+  
+.first-section
+  &__content
+    padding-top: 40px
+  &__top-wrapper
+    display: flex
+    justify-content: space-between
+    align-items: center
+    @include phone
+      justify-content: unset
+      align-items: unset
+      flex-direction: column
+      gap: 20px
+  &__user-wrapper
+    display: flex
+    gap: 20px
+    align-items: center
+    @include phone
+      gap: unset
+      justify-content: space-between
+  &__user-icon
+    min-width: 40px
+    min-height: 40px
+    path
+      fill: var(--user-icon)
+    rect
+      fill: var(--bg-user-icon)
+
+  &__user-email
+    font-family: var(--second-family)
+    font-weight: 700
+    font-size: 18px
+    line-height: 1.3
+    color: var(--text-title)
+
+  &__cards-wrapper
+    margin-top: 40px
+    display: flex
+    justify-content: center
+  &__orders-title
+    font-family: var(--second-family)
+    font-weight: 800
+    font-size: 32px
+    line-height: 1.3
+    color: var(--text-title)
+    margin-bottom: 34px
+    @include phone
+      font-size: 26px

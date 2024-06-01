@@ -1,36 +1,48 @@
 import styles from "./ProductCard.module.sass";
-import { useAddToCartMutation } from "../../../redux";
+import { usePutCartMutation } from "../../../redux";
 import AddToCartBtn from "../add-to-cart-btn/AddToCartBtn.jsx";
 import LinkToCartBtn from "../link-to-cart-btn/LinkToCartBtn.jsx";
 import ProductCounter from "../product-counter/ProductCounter.jsx";
 import { FC, useEffect } from "react";
 import useServerError from "../../../hooks/useServerError.js";
 import { IValueServerError } from "../../../interfaces/ServerErrorValue.interface.js";
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
-  cart: IShopApiCartItem[];
+  cart: IShopApiDataItem[] | undefined;
   product: IShopApiDataItem;
+  uMockid: string | null;
+  isUserDateLoading: boolean;
 }
 
-const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
+const ProductCard: FC<ProductCardProps> = ({ cart, product, uMockid, isUserDateLoading }) => {
+  const navigate = useNavigate();
   /*product have: id, title, subtitle, price, count, img, currency */
-  const [addToCart, {isLoading: isAddToCartLoading, isError: isAddError}] = useAddToCartMutation()
+  const [putCart, {isLoading: isPutCartLoading, isError: isPutCartError}] = usePutCartMutation()
   const {isTooManyRequestsError, setServerError}: IValueServerError = useServerError()
   useEffect(() => {
-    if (isAddError) {
+    if (isPutCartError) {
       setServerError();
     }
-  }, [isAddError])
+  }, [isPutCartError])
 
-  const cardState = cart.find((item) => { return item.id === product.id})
+  const cardState = cart?.find((item) => { return item.id === product.id})
 
 
   async function addProduct(product: IShopApiDataItem): Promise<void> {
-    if (isTooManyRequestsError) {
-      alert('Too many requests to MockApi, await 20 seconds');
-      return
+    if (cart && uMockid) {
+      if (isTooManyRequestsError) {
+        alert('Too many requests to MockApi, await 20 seconds');
+        return
+      }
+      if (isPutCartLoading || isUserDateLoading) {
+        return
+      }
+      const newCartArray = [...cart, product]
+      await putCart({newCartArray: newCartArray, uMockid: uMockid}).unwrap()
+    } else {
+      navigate( '/login' )
     }
-    await addToCart({product: product}).unwrap()
   }
 
   return (
@@ -54,10 +66,10 @@ const ProductCard: FC<ProductCardProps> = ({ cart, product }) => {
             </span>
           </p>
         </div>
-        {!cardState && <AddToCartBtn isAddToCartLoading={isAddToCartLoading} onClick={() => addProduct(product)}/>}
-        {cardState && (
+        {!cardState && <AddToCartBtn isAddToCartLoading={isPutCartLoading} onClick={() => addProduct(product)}/>}
+        {cardState && cart && (
           <div className={styles["product-card__added-wrapper"]}>
-            <ProductCounter cardState={cardState}/>
+            <ProductCounter cart={cart} cardState={cardState}/>
             <LinkToCartBtn />
           </div>
         )}

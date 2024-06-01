@@ -6,7 +6,6 @@ import { IFormValues } from '../../../interfaces/FormValues.interface';
 interface ILocationState {
     formInfo: IFormValues;
     order: IShopApiDataItem[];
-    totalSumOrder: number;
 }
 
 const DeliveryPage: FC = () => {

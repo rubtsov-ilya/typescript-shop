@@ -1,15 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IInitialState {
-  email: null | string,
-  token: null | string,
-  uid: null | string,
+  email: null | string;
+  token: null | string;
+  uid: null | string;
+  uMockid: null | string;
 }
 
 const initialState: IInitialState = {
   email: null,
   token: null,
   uid: null,
+  uMockid: null
 };
 
 const userSlice = createSlice({
@@ -19,15 +21,17 @@ const userSlice = createSlice({
     selectUser: state => state,
   },
   reducers: {
-    setUser(state, action) {
+    setUser(state, action: PayloadAction<IInitialState>) {
       state.email = action.payload.email;
       state.token = action.payload.token;
-      state.uid = action.payload.id;
+      state.uid = action.payload.uid;
+      state.uMockid = action.payload.uMockid;
     },
     removeUser(state) {
       state.email = null;
       state.token = null;
       state.uid = null;
+      state.uMockid = null;
     }
   },
 });

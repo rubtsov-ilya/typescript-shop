@@ -8,8 +8,16 @@ interface IShopApiDataItem {
   img: string;
 }
 
-interface IShopApiCartItem extends IShopApiDataItem{
+/* interface IShopApiCartItem extends IShopApiDataItem{
   mockid: string;
+} */
+
+interface IShopApiUser {
+  mockid: string;
+  uid: string;
+  cart: IShopApiDataItem[];
+  orders: IOrder[];
+  
 }
 
 interface IShopApiDataQuery {
@@ -17,3 +25,22 @@ interface IShopApiDataQuery {
   isLoading?: boolean;
   isError?: boolean;
 }
+
+interface IRegisterUserState {
+  user: {
+    uid: string,
+    cart: [],
+    orders: [],
+  };
+}
+
+interface IOrder {
+  fullСreationDate: string;
+  order: IShopApiDataItem[];
+  orderPrice: number;
+}
+
+/* interface IOrders {
+  ordersData: IOrder[]
+}
+ */

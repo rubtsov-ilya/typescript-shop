@@ -2,13 +2,14 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../redux/slices/UserSlice";
 
 const useAuth = () => {
-  const {email, token, uid} = useSelector(selectUser);
+  const {email, token, uid, uMockid} = useSelector(selectUser);
 
   return {
-    isAuth: !email,
+    isAuth: !!email,
     email,
     token,
-    uid
+    uid,
+    uMockid
   }
 }
 

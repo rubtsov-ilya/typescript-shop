@@ -2,15 +2,19 @@ import { FC, useRef } from "react";
 import styles from "./FirstCartSection.module.sass";
 import Form from "./form/Form";
 import Cart from "./cart/Cart";
-import { useGetCartQuery } from "../../../../redux/index";
+import { useGetUserStateQuery } from "../../../../redux/index";
 import useBodyLock from "../../../../hooks/useBodyLock";
+import useAuth from "../../../../hooks/useAuth";
 
 const FirstCartSection: FC = () => {
+  const {email, isAuth, uid, uMockid} = useAuth()
+  console.log(email, isAuth, uid, uMockid)
   const btnRef = useRef<HTMLButtonElement>(null)
   const { isBodyLock, lockPaddingValue } = useBodyLock()
   
-  const { data: cart = [], isLoading: isLoadingCart, isError: isErrorCart} = useGetCartQuery()
-
+  const { data: userData = null, isError: isErrorUserData, isLoading: isLoadingUserData } = useGetUserStateQuery({ uMockid: uMockid! }, { skip: uMockid === null })
+  const cart = userData ? userData.cart : []
+  const orders = userData ? userData.orders : []
   const deliveryPrice = 3.5
 
   const sumOrder = Number(cart.reduce((acc, item): number => {
@@ -29,8 +33,8 @@ const FirstCartSection: FC = () => {
     <section style={ isBodyLock ? { paddingRight: `${lockPaddingValue}px` } : {}} className={styles["first-section"]}>
       <div className="container">
         <div className={styles["first-section__content"]}>
-          <Form totalSumOrder={totalSumOrder} cart={cart} btnRef={btnRef} />
-          <Cart totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} cart={cart} isLoadingCart={isLoadingCart} isErrorCart={isErrorCart} doFormSubmit={doFormSubmit} />
+          <Form orders={orders} totalSumOrder={totalSumOrder} cart={cart} btnRef={btnRef} />
+          <Cart totalSumOrder={totalSumOrder} sumOrder={sumOrder} deliveryPrice={deliveryPrice} cart={cart} isLoadingCart={isLoadingUserData} isErrorCart={isErrorUserData} doFormSubmit={doFormSubmit} />
         </div>
       </div>
     </section>
