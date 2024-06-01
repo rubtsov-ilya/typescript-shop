@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { persistStore, 
   persistReducer, 
   FLUSH,
@@ -10,7 +10,7 @@ import { persistStore,
 import storage from 'redux-persist/lib/storage'
 import { shopApi } from './shopApi'
 import userReducer from './slices/UserSlice'
-import { combineReducers } from '@reduxjs/toolkit'
+
 
 const persistConfig = {
   key: 'root',
