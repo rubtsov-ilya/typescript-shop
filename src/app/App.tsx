@@ -3,7 +3,6 @@ import HomePage from "../components/pages/home-page/HomePage.tsx";
 import Layout from "./../components/layout/Layout.tsx";
 import BodyLockProvider from "../providers/BodyLockProvider.tsx";
 import NotfoundPage from "../components/pages/not-found-page/NotfoundPage.tsx";
-import CartPage from "../components/pages/cart-page/CartPage.tsx";
 import ScrollToTopProvider from "../providers/ScrollToTopProvider.tsx";
 import DeliveryPage from "../components/pages/delivery-page/DeliveryPage.tsx";
 import DarkThemeProvider from "../providers/DarkThemeProvider.tsx";
@@ -13,6 +12,7 @@ import RegisterPage from "../components/pages/register-page/RegisterPage.tsx";
 import ResetPasswordPage from "../components/pages/reset-password-page/ResetPasswordPage.tsx";
 import AuthProvider from "../providers/AuthProvider.tsx";
 import AccountPage from "../components/pages/account-page/AccountPage.tsx";
+import CartPage from "../components/pages/cart-page/CartPage.tsx";
 
 
 export default function App() {
