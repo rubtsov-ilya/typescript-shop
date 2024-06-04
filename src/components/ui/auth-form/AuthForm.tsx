@@ -67,6 +67,9 @@ const AuthForm: FC<AuthFormProps> = ({ btnText, titleText, isRegister, isLogin, 
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage)
+          if (errorCode === 'auth/email-already-in-use') {
+            setError('email', { type: 'manual', message: 'this email is already registered' });
+          }
         });
       /* end firebase register */
     } else if (isLogin) {
