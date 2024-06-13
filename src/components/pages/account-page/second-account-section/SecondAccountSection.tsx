@@ -23,7 +23,7 @@ const SecondAccountSection: FC<SecondAccountSectionProps> = ({orders, isErrorUse
             { isLoadingUserData && <h1 className={styles["second-section__orders-title"]}>Loading</h1> }
 
             {orders.length !== 0 && !isErrorUserData && !isLoadingUserData && orders.map((orderItem) => {
-            return <OrderCard key={orderItem.fullСreationDate} orderItem={orderItem}/>})
+            return <OrderCard key={orderItem.fullСreationDate} orderItem={orderItem}/>}).reverse()
             }
 
         </div>
