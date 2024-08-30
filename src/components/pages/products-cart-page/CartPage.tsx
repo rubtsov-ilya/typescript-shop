@@ -9,9 +9,9 @@ const ProductsCartPage: FC = () => {
     return <Navigate to="/login" replace />;
   }
   return (
-    <main>
+    <>
       <FirstCartSection />
-    </main>
+    </>
   )
 }
 

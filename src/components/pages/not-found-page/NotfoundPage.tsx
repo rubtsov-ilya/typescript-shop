@@ -3,7 +3,7 @@ import styles from "./NotfoundPage.module.sass";
 
 const NotfoundPage: FC = () => {
   return (
-    <main className={styles["notfound-section"]}>
+    <section className={styles["notfound-section"]}>
       <div className="container">
         <div className={styles["notfound-section__content"]}>
           <h1 className={styles["notfound-section__title"]}>
@@ -11,7 +11,7 @@ const NotfoundPage: FC = () => {
           </h1>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
 

@@ -9,9 +9,9 @@ const LoginPage: FC = () => {
     return <Navigate to="/" replace />;
   }
   return (
-    <main>
+    <>
       <FirstLoginSection />
-    </main>
+    </>
   )
 }
 

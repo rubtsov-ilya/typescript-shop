@@ -11,10 +11,10 @@ const ResetPasswordPage: FC = () => {
   }
   const [isMessageSended, setIsMessageSended] = useState<boolean>(false)
   return (
-    <main>
+    <>
       {!isMessageSended && <ResetPasswordSection setIsMessageSended={setIsMessageSended} />}
       {isMessageSended && <AlertSendedSection />}
-    </main>
+    </>
   )
 }
 

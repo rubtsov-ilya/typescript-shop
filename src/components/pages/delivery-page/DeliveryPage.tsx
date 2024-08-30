@@ -20,9 +20,9 @@ const DeliveryPage: FC = () => {
   const orderData = locationState.formInfo
 
   return (
-    <main>
+    <>
       <FirstDeliverySection orderData={orderData}/>
-    </main>
+    </>
   )
 }
 

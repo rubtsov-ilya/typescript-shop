@@ -4,10 +4,10 @@ import { FC } from "react";
 
 const Layout: FC = () => {
   return (
-    <>
+    <main>
       <Header />
         <Outlet />
-    </>
+    </main>
   )
 }
 

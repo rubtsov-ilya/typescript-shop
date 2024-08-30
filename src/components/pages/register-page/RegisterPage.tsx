@@ -9,9 +9,9 @@ const RegisterPage: FC = () => {
     return <Navigate to="/" replace />;
   }
   return (
-    <main>
+    <>
       <FirstRegisterSection />
-    </main>
+    </>
   )
 }
 

@@ -15,10 +15,10 @@ const AccountPage: FC = () => {
   }
 
   return (
-    <main>
+    <>
       <FirstAccountSection email={email!}/>
       <SecondAccountSection orders={orders} isErrorUserData={isErrorUserData} isLoadingUserData={isLoadingUserData}/>
-    </main>
+    </>
   )
 }
 
